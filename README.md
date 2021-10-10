@@ -11,3 +11,12 @@ esta funcion permite instanciar los componentes de tipo React (si los quieres re
 - indexacin de componmentes de tpo react: para que el livecycle del proceso de render de react funcione, necesita indexar de manera unica cada componente que instanciamos, 
 de manera que si no le proporcionamos este valor como property (en el createElement()) considera como indexacion el tag del DOm que representa, y como los tags de html son reutilizable siempre aparecera como error: "Warning: Each child in a list should have a unique "key" prop.
 "
+
+- PARCEL
+Es bundler para proyectos de front-end, con el mismo objetivo que webpack.
+- Integracion con 0 configuracion
+puedes ejecutrar como entry point de parcel un index.html y creara un bundler en funcion de los scripts que encuentre en el html
+(aplicara el preprocesador de css, postcss, minifier de scripts, babel para js, ts...)
+los bundlers ase crean en /dist por defecto
+tambien creara un server http para desplegar la aplicacion que acaba de bundelizar (/dist).
+
