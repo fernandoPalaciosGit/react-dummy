@@ -23,4 +23,8 @@ Parcel utiliza babel para la transpilacion de codigo en el ejecutable del bundle
 si agregamos React en el codigo es necesario instalar ( @babel/core, @babel/preset-react) y configurar .babelr ({"runtime": "automatic"})
 
 "browserslist": [], en el package.json, asignamos el tipo de transpilacion a los navegadores que indicamos en esta configuracion, 
-para babel integrado por parcel (https://browserslist.dev)
+para babel integrado por parcel (https://browserslist.dev/?)
+
+- Babel, con la ultima version, reconoce el formarto de JSX e importa de manera automatica el modulo de React por defecto, asi que no es necesario la declaracion de su import
+
+

@@ -2,36 +2,31 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Pet from "./components/Pet";
 
-const animalData = [
-  {
-    animal: "Dog",
-    name: "Nero",
-    species: "Scottish terrier",
-  },
-  {
-    animal: "Bird",
-    name: "Luna",
-    species: "papagallo",
-  },
-  {
-    animal: "Fish",
-    name: "Wanda",
-    species: "Perca",
-  },
+const petsData = [
+    {
+        animal: "Dog",
+        name: "Nero",
+        species: "Scottish terrier",
+    },
+    {
+        animal: "Bird",
+        name: "Luna",
+        species: "papagallo",
+    },
+    {
+        animal: "Fish",
+        name: "Wanda",
+        species: "Perca",
+    },
 ];
 
 const App = () => {
-  return React.createElement(
-    "div",
-    {},
-    React.createElement("h1", {}, "Page Thumbnail"),
-    animalData.map((animal) => React.createElement(Pet, animal))
-  );
+    return (
+        <div>
+            <h1>Page Thumbnail</h1>
+            {petsData.map((pet) => <Pet animal={pet.animal} name={pet.name} species={pet.species}/>)}
+        </div>
+    );
 };
 
-ReactDOM.render(React.createElement(App), document.getElementById("root"));
-
-// const component = React.createElement(() => {
-//     return React.createElement("h1", {}, 'Page Thumbnail');
-// });
-// ReactDOM.render(component, document.getElementById('root'));
+ReactDOM.render(<App/>, document.getElementById("root"));
