@@ -19,4 +19,8 @@ puedes ejecutrar como entry point de parcel un index.html y creara un bundler en
 (aplicara el preprocesador de css, postcss, minifier de scripts, babel para js, ts...)
 los bundlers ase crean en /dist por defecto
 tambien creara un server http para desplegar la aplicacion que acaba de bundelizar (/dist).
+Parcel utiliza babel para la transpilacion de codigo en el ejecutable del bundle, uno de sus presets importantes es M,
+si agregamos React en el codigo es necesario instalar ( @babel/core, @babel/preset-react) y configurar .babelr ({"runtime": "automatic"})
 
+"browserslist": [], en el package.json, asignamos el tipo de transpilacion a los navegadores que indicamos en esta configuracion, 
+para babel integrado por parcel (https://browserslist.dev)
