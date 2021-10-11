@@ -48,3 +48,7 @@ const [parametro_escritura, callback_escritura] = useState(valor_inicializacion)
 
 1- asignamos el parametro de escritura del hook al valor del control de usuario
 2 - utilizamos uno de los callbacks de binding de informacion en el control de usuario (onChange, onInput, onMouseOver....) y al leer el nuevo valos utilizamos el callback de escritura del hook para reasignar el valor
+
+- Condiciones de carrera en la asignacion de Hooks
+Devemos evitar declarar Hooks dentro de condicionales: el orden de declaracion de nuestros Hoks es muy importante, si condicionamos un hoook podemos provocar que el accesa a estado de la aplicacion no esa el correcto
+Para ello pondremos una constraint en eslint que forzara al programador a declarar el hook
