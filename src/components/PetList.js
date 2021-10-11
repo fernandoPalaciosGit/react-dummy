@@ -21,7 +21,7 @@ const petsData = [
 
 const PetList = () => {
     return (
-        petsData.map((pet) => <Pet animal={pet.animal} name={pet.name} species={pet.species}/>)
+        petsData.map((pet) => <Pet key={pet.animal} animal={pet.animal} name={pet.name} species={pet.species}/>)
     );
 };
 
