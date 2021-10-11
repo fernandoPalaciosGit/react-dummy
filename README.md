@@ -27,4 +27,24 @@ para babel integrado por parcel (https://browserslist.dev/?)
 
 - Babel, con la ultima version, reconoce el formarto de JSX e importa de manera automatica el modulo de React por defecto, asi que no es necesario la declaracion de su import
 
+- className="myclass in jsxs" 
+Se traduce durante el transpiled de JSX en el atributo class del markup de HTML, recordar que la  sintaxis en los JS en modo JSX
+se traducen como objetos de inicializazion de los componentes en React dfe tipo DOMElement (templating).
 
+- HOOKS
+manejo del estado en la aplicacion, en el runtime de JS
+
+podemos usar Hooks or Class Components
+
+- Data binding
+EL ejemplo mas util del data binding en un control de usuario para un formulario, por ejemplo un input de tipo texto.
+En react hay que asignarle un modelo de datos a cada control, no es como ANgular que implementa de manera nativa el double-data-binding y permite de manera directa asignar un hook a aun elemento.
+En cuyo casoReact avisa por consola: Warning: You provided a `value` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultValue`. Otherwise, set either `onChange` or `readOnly`.
+
+- useState: La lireria core de React provee varios Hooks relacionados con el mantenimiento del estado de la aplcacion: useState, useDebug....
+useState se utuliza para asignar un objeto como estado de una parte de la aplicacion
+
+const [parametro_escritura, callback_escritura] = useState(valor_inicializacion);
+
+1- asignamos el parametro de escritura del hook al valor del control de usuario
+2 - utilizamos uno de los callbacks de binding de informacion en el control de usuario (onChange, onInput, onMouseOver....) y al leer el nuevo valos utilizamos el callback de escritura del hook para reasignar el valor
