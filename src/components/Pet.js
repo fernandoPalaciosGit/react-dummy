@@ -1,14 +1,16 @@
-import React from 'react';
+import React from "react";
 
-const Pet = (props) => {
-    return (
-        <div id={'my pet'}>
-            <h2>{props.name}</h2>
-            <h3>{props.animal}, {props.breed}</h3>
-            <h4>{props.city}</h4>
-            <div>{props.description}</div>
-        </div>
-    );
+const Pet = ({ pet, id }) => {
+  return (
+    <div id={id}>
+      <h2>{pet.name}</h2>
+      <h3>
+        {pet.animal}, {pet.breed}
+      </h3>
+      <h4>{pet.city}</h4>
+      <div>{pet.description}</div>
+    </div>
+  );
 };
 
-export default Pet
+export default Pet;

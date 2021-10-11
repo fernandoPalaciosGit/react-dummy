@@ -1,18 +1,16 @@
-import React from 'react';
+import React from "react";
 import Pet from "./Pet";
 
-const PetList = (props) => {
-    return (
-        props.list.map((pet) =>(
-            <Pet key={pet.id}
-                 animal={pet.animal}
-                 name={pet.name}
-                 breed={pet.breed}
-                 city={pet.city}
-                 description={pet.description}
-            />
-        ))
-    );
+const PetList = ({ list = [] }) => {
+  return (
+    <div className="search">
+      {list.length === 0 ? (
+        <h3>No Pets Found</h3>
+      ) : (
+        list.map((pet) => <Pet key={pet.id} pet={pet} />)
+      )}
+    </div>
+  );
 };
 
 export default PetList;
