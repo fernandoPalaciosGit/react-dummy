@@ -1,27 +1,17 @@
 import React from 'react';
 import Pet from "./Pet";
 
-const petsData = [
-    {
-        animal: "Dog",
-        name: "Nero",
-        species: "Scottish terrier",
-    },
-    {
-        animal: "Bird",
-        name: "Luna",
-        species: "papagallo",
-    },
-    {
-        animal: "Fish",
-        name: "Wanda",
-        species: "Perca",
-    },
-];
-
-const PetList = () => {
+const PetList = (props) => {
     return (
-        petsData.map((pet) => <Pet key={pet.animal} animal={pet.animal} name={pet.name} species={pet.species}/>)
+        props.list.map((pet) =>(
+            <Pet key={pet.id}
+                 animal={pet.animal}
+                 name={pet.name}
+                 breed={pet.breed}
+                 city={pet.city}
+                 description={pet.description}
+            />
+        ))
     );
 };
 

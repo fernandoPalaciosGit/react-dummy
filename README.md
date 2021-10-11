@@ -52,3 +52,11 @@ const [parametro_escritura, callback_escritura] = useState(valor_inicializacion)
 - Condiciones de carrera en la asignacion de Hooks
 Devemos evitar declarar Hooks dentro de condicionales: el orden de declaracion de nuestros Hoks es muy importante, si condicionamos un hoook podemos provocar que el accesa a estado de la aplicacion no esa el correcto
 Para ello pondremos una constraint en eslint que forzara al programador a declarar el hook
+
+
+- useState como inplementacion singular de un componente
+normalmente los componentes en react estan desglosados para encapsularse a modo de matrioska, de tal manera que un Componente pueda integrar un Hook de tipo useState que permita distribuir sus estado en diferentes Dummy componentes
+Esto permitiria descartar el tipo de Reedux que solemos ver centralizado en un unico funnel de la aplciacion, independiente de los componentes.
+
+- useEffect: es un hook que nos permite sincronizar datos fuera del contexto de un componente
+es el hook que permite acceder a datos de manera transversal a los componentes.
