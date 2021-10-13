@@ -326,3 +326,11 @@ header {
     height: 60px;
   }
 }
+
+
+.dark-Mode.search-params form ,
+.dark-Mode.details ,
+.dark-Mode .search ,
+.dark-Mode #modal > div {
+  background: #838fc1;
+}

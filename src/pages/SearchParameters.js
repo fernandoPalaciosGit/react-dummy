@@ -1,7 +1,8 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import PetList from "./../components/PetList";
 import useBreedList from "../hooks/useBreedList";
+import { ReaderMode } from "../providers/ReaderMode";
 
 const API = "https://pets-v2.dev-apis.com/pets";
 const ANIMALS = ["dog", "cat", "bird", "horse"];
@@ -12,6 +13,7 @@ const SearchParameters = (props) => {
   const [animal, setAnimal] = useState("");
   const [pets, setPets] = useState([]);
   const [breeds, statusBreeds] = useBreedList(animal);
+  const theme = useContext(ReaderMode);
 
   function onDestroyComponent() {
     console.log("---------> Destroyed component");
@@ -32,7 +34,7 @@ const SearchParameters = (props) => {
   }, [animal, breed, location]);
 
   return (
-    <div className="search-params">
+    <div className={`search-params ${theme}`}>
       <h2>Search Pets Page</h2>
       <form
         onSubmit={(evt) => {

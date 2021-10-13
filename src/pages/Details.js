@@ -1,7 +1,8 @@
-import { Component } from "react";
+import { Component, useContext } from "react";
 import { withRouter } from "react-router-dom";
 import Carousel from "../components/Carousel";
 import ErrorBoundary from "../components/ErrorBoundary";
+import { ReaderMode } from "../providers/ReaderMode";
 
 class Details extends Component {
   API = "https://pets-v2.dev-apis.com/pets";
@@ -47,7 +48,7 @@ class Details extends Component {
 
   renderDescription(details) {
     return (
-      <div className="details">
+      <div className={`details ${this.props.theme}`}>
         <Carousel images={details.images} />
         {this.renderDetails(details)}
       </div>
@@ -70,8 +71,8 @@ class Details extends Component {
 }
 
 export const DetailsWithRouter = withRouter(Details);
-export const DetailsWithErrorBoundary = () => (
+export const DetailsWithErrorBoundary = (props) => (
   <ErrorBoundary>
-    <DetailsWithRouter />
+    <DetailsWithRouter {...props} />
   </ErrorBoundary>
 );

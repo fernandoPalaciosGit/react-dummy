@@ -25,7 +25,7 @@ export default class App extends Component {
     return (
       <Switch>
         <Route path="/details/:id">
-          <DetailsWithErrorBoundary />
+          <DetailsWithErrorBoundary theme={this.state.reader} />
         </Route>
         <Route path="/">
           <SearchParameters location="Seattle" />
@@ -34,11 +34,26 @@ export default class App extends Component {
     );
   }
 
+  renderToggleReader() {
+    return (
+      <div>
+        <button onClick={() => this.setState({ reader: READ_MODE.LIGHT })}>
+          light mode
+        </button>
+        <br />
+        <button onClick={() => this.setState({ reader: READ_MODE.DARK })}>
+          dark mode
+        </button>
+      </div>
+    );
+  }
+
   render() {
     return (
       <div>
         <Router>
           {this.renderHeader()}
+          {this.renderToggleReader()}
 
           <ReaderMode.Provider value={this.state.reader}>
             {this.renderBody()}
