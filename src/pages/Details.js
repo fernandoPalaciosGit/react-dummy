@@ -16,7 +16,7 @@ class Details extends Component {
     );
 
     this.setState({
-      loading: true,
+      loading: false,
       ...pets[0],
     });
   }
@@ -26,12 +26,26 @@ class Details extends Component {
     // so as state() of pets loads its information by async fetch(), then this render funciton is going to log twice (each time any parameter is going to update)
     // the part of rendering is very performanced because is going to recreate the DOM only the part is affected
 
-    console.log(this.state);
+    const { loading, animal, breed, city, state, description, name, images } =
+      this.state;
 
     return (
-      <div className="search-params">
-        <h2>Details Page</h2>
-      </div>
+      !loading && (
+        <div className="details">
+          <div>
+            <h1>
+              {breed}, {name}
+            </h1>
+            <div>
+              {city}, {state}
+            </div>
+            <div>{description}</div>
+            {(images || []).map((image, idx) => (
+              <img key={`${name}-${idx}`} src={image} />
+            ))}
+          </div>
+        </div>
+      )
     );
   }
 }
