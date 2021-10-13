@@ -104,3 +104,8 @@ para ello necesitamos inicializar ese componente con la interfaz de ReacrRouter:
 
 - static defaultProps
 setea las properties de inicializacion del componmente hijo si el padre NO las define (si el valor es undefined)
+
+- Error Boundaries
+SOlo funciona con React component class , NO con function components
+- lifecycle: componentDidCatch()
+se utiliza para controlar los errores de ejecucion y redireccionar al usuario a un estado consecuente    

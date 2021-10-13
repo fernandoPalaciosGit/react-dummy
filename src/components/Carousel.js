@@ -9,6 +9,10 @@ export default class Carousel extends Component {
     active: 0,
   };
 
+  setActiveThumbnail = ({ target }) => {
+    this.setState({ active: parseInt(target.dataset.index) });
+  };
+
   renderThumbnail(image, idx) {
     return (
       <img
@@ -16,6 +20,8 @@ export default class Carousel extends Component {
         src={image}
         alt="animal thumbnail"
         className={idx === this.state.active ? "active" : ""}
+        data-index={idx}
+        onClick={this.setActiveThumbnail}
       />
     );
   }

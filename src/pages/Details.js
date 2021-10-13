@@ -1,16 +1,19 @@
 import { Component } from "react";
 import { withRouter } from "react-router-dom";
 import Carousel from "../components/Carousel";
+import ErrorBoundary from "../components/ErrorBoundary";
 
 class Details extends Component {
   API = "https://pets-v2.dev-apis.com/pets";
-  state = { loading: true };
+  state = { loading: true, numberOfResults: 0 };
 
   async getPet(petId) {
     return await fetch(`${this.API}?id=${petId}`)
       .then((res) => res.json())
-      .then(({ pets }) => pets[0] || {})
-      .catch(() => {});
+      .then(
+        ({ pets, numberOfResults }) => ({ ...pets[0], numberOfResults } || {})
+      )
+      .catch(() => ({ numberOfResults: 0 }));
   }
 
   // execute once after the first render
@@ -56,10 +59,19 @@ class Details extends Component {
     // so as state() of pets loads its information by async fetch(), then this render funciton is going to log twice (each time any parameter is going to update)
     // the part of rendering is very performanced because is going to recreate the DOM only the part is affected
 
+    if (!this.state.loading && this.state.numberOfResults === 0) {
+      throw new Error("We have no Pets! in id " + this.props.match.params.id);
+    }
+
     return this.state.loading
       ? this.renderLoader()
       : this.renderDescription(this.state);
   }
 }
 
-export default withRouter(Details);
+export const DetailsWithRouter = withRouter(Details);
+export const DetailsWithErrorBoundary = () => (
+  <ErrorBoundary>
+    <DetailsWithRouter />
+  </ErrorBoundary>
+);

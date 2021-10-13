@@ -2,8 +2,8 @@ import React from "react";
 import { StrictMode } from "react";
 import ReactDOM from "react-dom";
 import SearchParameters from "./pages/SearchParameters";
-import Details from "./pages/Details";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { DetailsWithRouter, DetailsWithErrorBoundary } from "./pages/Details";
 
 const App = () => {
   return (
@@ -17,7 +17,7 @@ const App = () => {
 
         <Switch>
           <Route path="/details/:id">
-            <Details />
+            <DetailsWithErrorBoundary />
           </Route>
           <Route path="/">
             <SearchParameters location="Seattle" />
