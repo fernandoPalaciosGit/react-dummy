@@ -74,3 +74,13 @@ es un parser de codigo que obliga al desarrollador a utilizar las interfaces y o
 strict mode = safe API
 es un linter, al igual que eslint, que evita el uso de codigo que el equipo de React no marca como permanente en la aplicacion
 No actua en el bundler final, no mejora el performance de la aplicacion 
+
+- REACT ROUTING
+como todo en React, la libreria expone el routing como si fuera un componente : <RouteeDom/> y <Route>
+la manera en la que machea el route a traves de la property {path} es muy abierta, hace match sin restricciones de izquierda a derecha del pattern aplicado
+/details/:id machea con
+localhost:4000
+localhost:4000/details
+localhost:4000/details/456
+
+Para permitir que solo machee con una ruta (la primera que encuentre en la lista por orden de aplilacion) se utiliza  <Switch> sobre las <Route> 

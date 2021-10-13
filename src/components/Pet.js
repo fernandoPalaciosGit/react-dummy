@@ -1,10 +1,10 @@
 import React from "react";
 
 const Pet = ({ pet, id }) => {
-  const image = Array.isArray(pet.images) ? pet.images[0] : '';
+  const image = Array.isArray(pet.images) ? pet.images[0] : "";
 
   return (
-    <a href={`/details/${id}`} className="pet">ñ
+    <a href={`/details/${id}`} className="pet">
       <div className="image-container">
         <img src={image} alt="" />
       </div>

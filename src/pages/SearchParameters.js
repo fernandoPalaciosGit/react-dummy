@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import PetList from "./PetList";
+import PetList from "./../components/PetList";
 import useBreedList from "../hooks/useBreedList";
 
 const API = "https://pets-v2.dev-apis.com/pets";
@@ -33,6 +33,7 @@ const SearchParameters = (props) => {
 
   return (
     <div className="search-params">
+      <h2>Search Pets Page</h2>
       <form
         onSubmit={(evt) => {
           evt.preventDefault();
