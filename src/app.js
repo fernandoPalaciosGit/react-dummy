@@ -3,13 +3,18 @@ import { StrictMode } from "react";
 import ReactDOM from "react-dom";
 import SearchParameters from "./pages/SearchParameters";
 import Details from "./pages/Details";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 const App = () => {
   return (
     <div>
-      <h1>Page Thumbnail</h1>
       <Router>
+        <header>
+          <Link to="/">
+            <h1>Page Thumbnail</h1>
+          </Link>
+        </header>
+
         <Switch>
           <Route path="/details/:id">
             <Details />

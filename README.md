@@ -84,3 +84,9 @@ localhost:4000/details
 localhost:4000/details/456
 
 Para permitir que solo machee con una ruta (la primera que encuentre en la lista por orden de aplilacion) se utiliza  <Switch> sobre las <Route> 
+
+- LINK tags from react-dom
+cuando utilizamos un <a> para cambiar la URL y cargar otra pagina de la aplciacion, indicamos al navegador que queremos cargar otro recurso en el cliente
+por lo que refrescara toda la pagina para ir a esa nueva ruta
+- si modiicamos <a href> --> <Link to> indicamos a React que queremos movernos por las paginas o secciones de un SPA, por lo que unicamente se ejecutara el codigo de la <Route> que machee
+- Important : tenemos que utilizar el mismo <Router> en toda la SPA
