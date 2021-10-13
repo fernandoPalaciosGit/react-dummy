@@ -60,3 +60,17 @@ Esto permitiria descartar el tipo de Reedux que solemos ver centralizado en un u
 
 - useEffect: es un hook que nos permite sincronizar datos fuera del contexto de un componente
 es el hook que permite acceder a datos de manera transversal a los componentes.
+
+
+- NODE_ENV=development
+las aplicaciones montadas en React permiten debuguear errores de manera verbosa si esta variable de entorno esta configurada en modo desarrollador
+under the hood el motor de transpilacion de la aplicacion (Parcel) si no encuentra esta variable de entorno lo preconfigura por defecto
+just only type in your console: NODE_ENV=developmet && echo $NODE_ENV   
+
+Si ademas seteamos NODE_ENV=production permitiremos al bundler de parcel minimizar el package para desplegar en los servidores de produccion
+
+Acivacion del modo strict mode
+es un parser de codigo que obliga al desarrollador a utilizar las interfaces y objetos que estan habilitados como  API segura
+strict mode = safe API
+es un linter, al igual que eslint, que evita el uso de codigo que el equipo de React no marca como permanente en la aplicacion
+No actua en el bundler final, no mejora el performance de la aplicacion 

@@ -18,7 +18,7 @@ export default function useBreedList(animal) {
   useEffect(() => {
     if (!animal) {
       setBreedList([]);
-    } else if (!!breedCached[animal]) {
+    } else if (breedCached[animal]) {
       setBreedList(breedCached[animal]);
     } else {
       setBreedList([]);
