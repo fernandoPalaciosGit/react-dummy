@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { withRouter } from "react-router-dom";
+import Carousel from "../components/Carousel";
 
 class Details extends Component {
   API = "https://pets-v2.dev-apis.com/pets";
@@ -26,22 +27,26 @@ class Details extends Component {
     return <h2>loading … </h2>;
   }
 
+  renderDetails({ breed, name, city, state, description }) {
+    return (
+      <div>
+        <h1>
+          {breed}, {name}
+        </h1>
+        <div>
+          {city}, {state}
+        </div>
+        <div>{description}</div>
+        <button>Adopt {name}</button>
+      </div>
+    );
+  }
+
   renderDescription(details) {
     return (
       <div className="details">
-        <div>
-          <h1>
-            {details.breed}, {details.name}
-          </h1>
-          <div>
-            {details.city}, {details.state}
-          </div>
-          <div>{details.description}</div>
-          <button>Adopt {name}</button>
-          {(details.images || []).map((image, idx) => (
-            <img key={`${details.name}-${idx}`} src={image} alt=""/>
-          ))}
-        </div>
+        <Carousel images={details.images} />
+        {this.renderDetails(details)}
       </div>
     );
   }

@@ -101,3 +101,6 @@ componentDidMount(): se ejecuta en la primera instancia del componente
 this.state = {}: es un hook asignado por defecto a cualquier componente de React === const [state, setState] = useState({})
 this.props.match.params.id: React recupera los parametros del ROuting que visualiza cualquier componente y los añade a this.props.match.params
 para ello necesitamos inicializar ese componente con la interfaz de ReacrRouter: export default withRouter(MyCustomComponent)
+
+- static defaultProps
+setea las properties de inicializacion del componmente hijo si el padre NO las define (si el valor es undefined)
