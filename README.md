@@ -109,3 +109,6 @@ setea las properties de inicializacion del componmente hijo si el padre NO las d
 SOlo funciona con React component class , NO con function components
 - lifecycle: componentDidCatch()
 se utiliza para controlar los errores de ejecucion y redireccionar al usuario a un estado consecuente    
+
+- Context
+Se utiliza para definir variables de contexto que podamos leer y sobreescribir en distintas partes de la aplicacion
