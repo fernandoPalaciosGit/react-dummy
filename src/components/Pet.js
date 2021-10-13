@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Pet = ({ pet, id }) => {
+const Pet = ({ pet }) => {
   const image = Array.isArray(pet.images) ? pet.images[0] : "";
 
   return (
-    <Link to={`/details/${id}`} className="pet">
+    <Link to={`/details/${pet.id}`} className="pet">
       <div className="image-container">
         <img src={image} alt="" />
       </div>

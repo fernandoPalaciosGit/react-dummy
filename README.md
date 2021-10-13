@@ -90,3 +90,14 @@ cuando utilizamos un <a> para cambiar la URL y cargar otra pagina de la aplciaci
 por lo que refrescara toda la pagina para ir a esa nueva ruta
 - si modiicamos <a href> --> <Link to> indicamos a React que queremos movernos por las paginas o secciones de un SPA, por lo que unicamente se ejecutara el codigo de la <Route> que machee
 - Important : tenemos que utilizar el mismo <Router> en toda la SPA
+
+- CLASS COMPONENTS
+hasta ahora hemos llamado Componentes a toda clase que exportamos transpilada con JSX y que renderizamos con ReactDom
+@Component es una clase de React que permite construir clases customizadas a las que se le agregara un liveCycle del Render de React
+
+- interfaces en el liveCycle de React.Component
+render(): output de JSX, se ejecuta cada vez que se modifica alguna variable o componentes dentro del jsx que renderiza 
+componentDidMount(): se ejecuta en la primera instancia del componente
+this.state = {}: es un hook asignado por defecto a cualquier componente de React === const [state, setState] = useState({})
+this.props.match.params.id: React recupera los parametros del ROuting que visualiza cualquier componente y los añade a this.props.match.params
+para ello necesitamos inicializar ese componente con la interfaz de ReacrRouter: export default withRouter(MyCustomComponent)
