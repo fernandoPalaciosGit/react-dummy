@@ -6,6 +6,10 @@
     "prettier"
   ],
   "plugins": [],
+  "rules": {
+    "react/prop-types": 0
+  },
+  "parser": "@babel/eslint-parser",
   "parserOptions": {
     "ecmaVersion": 2019,
     "sourceType": "module",

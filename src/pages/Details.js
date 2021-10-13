@@ -1,24 +1,24 @@
 import { Component } from "react";
 import { withRouter } from "react-router-dom";
 
-const API = "https://pets-v2.dev-apis.com/pets";
-
 class Details extends Component {
-  constructor() {
-    super();
-    this.state = { loading: true };
+  API = "https://pets-v2.dev-apis.com/pets";
+  state = { loading: true };
+
+  async getPet(petId) {
+    return await fetch(`${this.API}?id=${petId}`)
+      .then((res) => res.json())
+      .then(({ pets }) => pets[0] || {})
+      .catch(() => {});
   }
 
   // execute once after the first render
   async componentDidMount() {
     const routeDetailsId = this.props.match.params.id;
-    const { pets } = await fetch(`${API}?id=${routeDetailsId}`).then((res) =>
-      res.json()
-    );
 
     this.setState({
       loading: false,
-      ...pets[0],
+      ...(await this.getPet(routeDetailsId)),
     });
   }
 
@@ -39,7 +39,7 @@ class Details extends Component {
           <div>{details.description}</div>
           <button>Adopt {name}</button>
           {(details.images || []).map((image, idx) => (
-            <img key={`${details.name}-${idx}`} src={image} />
+            <img key={`${details.name}-${idx}`} src={image} alt=""/>
           ))}
         </div>
       </div>
