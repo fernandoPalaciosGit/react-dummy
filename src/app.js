@@ -35,16 +35,17 @@ export default class App extends Component {
   }
 
   renderToggleReader() {
+    const options = Object.entries(READ_MODE).map(([key, reader]) => (
+      <option key={key} value={reader}>
+        {key}
+      </option>
+    ));
     return (
-      <div>
-        <button onClick={() => this.setState({ reader: READ_MODE.LIGHT })}>
-          light mode
-        </button>
-        <br />
-        <button onClick={() => this.setState({ reader: READ_MODE.DARK })}>
-          dark mode
-        </button>
-      </div>
+      <select
+        onChange={({ target }) => this.setState({ reader: target.value })}
+      >
+        {options}
+      </select>
     );
   }
 

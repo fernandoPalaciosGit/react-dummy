@@ -1,3 +1,5 @@
+Theory: https://btholt.github.io/complete-intro-to-react-v6/usecontext
+
 - div#root: NOT RENDERED anything: react is going to render App here
 - https://unpkg.com/react@17.0.1/umd/react.development.js: allows to load npm package from the proyect loaded by npm as service resource
 - Componentes de primer orden: todo en React son componentes, es objetivo es la mudularizacion de la infraestructura de la aplicacion a traves d eetos elementos
