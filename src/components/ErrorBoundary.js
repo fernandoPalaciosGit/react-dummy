@@ -28,11 +28,11 @@ export default class ErrorBoundary extends Component {
     }
   }
 
-  renderRedirect() {
+  Redirect = () => {
     return <Redirect to="/" />;
-  }
+  };
 
-  renderErrorState() {
+  ErrorState = () => {
     return (
       <div>
         <h2>
@@ -43,13 +43,13 @@ export default class ErrorBoundary extends Component {
         </div>
       </div>
     );
-  }
+  };
 
   render() {
     if (this.state.redirect) {
-      return this.renderRedirect();
+      return <this.Redirect />;
     } else if (this.state.hasError) {
-      return this.renderErrorState();
+      return <this.ErrorState />;
     } else {
       return this.props.children;
     }

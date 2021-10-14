@@ -11,7 +11,7 @@ export default class App extends Component {
     reader: READ_MODE.LIGHT,
   };
 
-  renderHeader() {
+  Header = () => {
     return (
       <header>
         <Link to="/">
@@ -19,9 +19,9 @@ export default class App extends Component {
         </Link>
       </header>
     );
-  }
+  };
 
-  renderBody() {
+  Body = () => {
     return (
       <Switch>
         <Route path="/details/:id">
@@ -32,9 +32,9 @@ export default class App extends Component {
         </Route>
       </Switch>
     );
-  }
+  };
 
-  renderToggleReader() {
+  ToggleReader = () => {
     const options = Object.entries(READ_MODE).map(([key, reader]) => (
       <option key={key} value={reader}>
         {key}
@@ -47,17 +47,17 @@ export default class App extends Component {
         {options}
       </select>
     );
-  }
+  };
 
   render() {
     return (
       <div>
         <Router>
-          {this.renderHeader()}
-          {this.renderToggleReader()}
+          <this.Header />
+          <this.ToggleReader />
 
           <ReaderMode.Provider value={this.state.reader}>
-            {this.renderBody()}
+            <this.Body />
           </ReaderMode.Provider>
         </Router>
       </div>

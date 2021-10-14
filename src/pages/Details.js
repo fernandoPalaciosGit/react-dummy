@@ -28,14 +28,14 @@ class Details extends Component {
     });
   }
 
-  renderLoader() {
+  Loader = () => {
     return <h2>loading … </h2>;
-  }
+  };
 
   adopt = () => (window.location = "http://bit.ly/adopt");
   toggleModal = () => this.setState({ showModal: !this.state.showModal });
 
-  renderAdoptModal() {
+  AdoptModal = ({ name }) => {
     return (
       <Modal>
         <h2>Whould you like to adopt {name}?</h2>
@@ -45,9 +45,12 @@ class Details extends Component {
         </div>
       </Modal>
     );
-  }
-  renderDetails({ breed, name, city, state, description }) {
-    const adoptModal = this.state.showModal ? this.renderAdoptModal() : null;
+  };
+
+  Details = ({ breed, name, city, state, description }) => {
+    const adoptModal = this.state.showModal ? (
+      <this.AdoptModal name={name} />
+    ) : null;
 
     return (
       <div>
@@ -62,20 +65,20 @@ class Details extends Component {
         {adoptModal}
       </div>
     );
-  }
+  };
 
-  renderDescription(details) {
+  Description = (details) => {
     return (
       <ReaderMode.Consumer>
         {(theme) => (
           <div className={`details ${theme}`}>
             <Carousel images={details.images} />
-            {this.renderDetails(details)}
+            <this.Details {...details} />
           </div>
         )}
       </ReaderMode.Consumer>
     );
-  }
+  };
 
   render() {
     // as we know render() executes every time, inside render changes any variable
@@ -86,9 +89,11 @@ class Details extends Component {
       throw new Error("We have no Pets! in id " + this.props.match.params.id);
     }
 
-    return this.state.loading
-      ? this.renderLoader()
-      : this.renderDescription(this.state);
+    return this.state.loading ? (
+      <this.Loader />
+    ) : (
+      <this.Description {...this.state} />
+    );
   }
 }
 

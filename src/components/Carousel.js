@@ -13,10 +13,9 @@ export default class Carousel extends Component {
     this.setState({ active: parseInt(target.dataset.index) });
   };
 
-  renderThumbnail(image, idx) {
+  Thumbnail = ({ image, idx }) => {
     return (
       <img
-        key={image}
         src={image}
         alt="animal thumbnail"
         className={idx === this.state.active ? "active" : ""}
@@ -24,7 +23,7 @@ export default class Carousel extends Component {
         onClick={this.setActiveThumbnail}
       />
     );
-  }
+  };
 
   hasImages() {
     return Array.isArray(this.props.images) && this.props.images.length > 0;
@@ -39,7 +38,9 @@ export default class Carousel extends Component {
             alt="animal picture"
           />
           <div className="carousel-smaller">
-            {this.props.images.map(this.renderThumbnail.bind(this))}
+            {this.props.images.map((image, idx) => (
+              <this.Thumbnail key={image} image={image} idx={idx} />
+            ))}
           </div>
         </div>
       )
