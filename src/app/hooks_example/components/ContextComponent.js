@@ -5,26 +5,34 @@ const nameSchema = {
   name: "",
   secondName: "",
   alias: "",
+  decrementHierarchic: () => {},
 };
-const NameContext = createContext([nameSchema, (obj) => obj]);
+const NameContext = createContext(nameSchema);
 
 const FourthLevelComponent = () => {
-  const name = useContext(NameContext);
+  const user = useContext(NameContext);
+
   return (
     <div>
-      <span>Fourth level</span>
       <div>
-        <small>
-          <strong>{JSON.stringify(name)}</strong>
-        </small>
+        <button onClick={user.decrementHierarchic}>
+          Decrement Hierarchic gender
+        </button>
       </div>
+      <span>Fourth level</span>
     </div>
   );
 };
 
 const ThirdLevelComponent = () => {
+  const name = useContext(NameContext);
   return (
     <div>
+      <div>
+        <small>
+          <strong>{JSON.stringify(name)}</strong>
+        </small>
+      </div>
       <span>Third level</span>
       <FourthLevelComponent />
     </div>
@@ -55,16 +63,21 @@ const ContextComponent = () => {
     name: "Fernando",
     secondName: "Palacios",
     alias: "Nando",
+    // aportamos cualquier callback que necesitemos en otra capa de abstraccion
+    incrementHierarchic: () =>
+      setName({ ...name, genderHierarchic: ++name.genderHierarchic }),
+    decrementHierarchic: () =>
+      setName({ ...name, genderHierarchic: --name.genderHierarchic }),
   });
-  const updateHierarchic = () =>
-    setName({ ...name, genderHierarchic: ++name.genderHierarchic });
 
   return (
     <div>
       <h3>useContext Example</h3>
       <NameContext.Provider value={name}>
         <FirstLevelComponent />
-        <button onClick={updateHierarchic}>update Hierarchic gender</button>
+        <button onClick={name.incrementHierarchic}>
+          Increment Hierarchic gender
+        </button>
       </NameContext.Provider>
     </div>
   );
