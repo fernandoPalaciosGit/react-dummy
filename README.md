@@ -117,3 +117,6 @@ Se utiliza para definir variables de contexto que podamos leer y sobreescribir e
 para setear un contexto: <MyContext.Provider value={myState}>
 para obtener el contexto en un componete de tipo clase: <MyContext.consumer>{(contextValue) => (<Component contextValue={contextValue}>)}</<MyContext.consumer>
 para obtener el contexto en un Componentes de tipo function: const contextValue = React.useContext(MyContext)
+
+- Portal : abstraer una interfaz fuera de la aplicacion de React -> Portal
+El uso es: tenemos una logica dentro de un componente que lo queremos externalizar fuera de la aplicacion

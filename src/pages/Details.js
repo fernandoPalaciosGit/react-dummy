@@ -3,10 +3,11 @@ import { withRouter } from "react-router-dom";
 import Carousel from "../components/Carousel";
 import ErrorBoundary from "../components/ErrorBoundary";
 import { ReaderMode } from "../providers/ReaderMode";
+import Modal from "../portals/Modal";
 
 class Details extends Component {
   API = "https://pets-v2.dev-apis.com/pets";
-  state = { loading: true, numberOfResults: 0 };
+  state = { loading: true, numberOfResults: 0, showModal: false };
 
   async getPet(petId) {
     return await fetch(`${this.API}?id=${petId}`)
@@ -31,7 +32,23 @@ class Details extends Component {
     return <h2>loading … </h2>;
   }
 
+  adopt = () => (window.location = "http://bit.ly/adopt");
+  toggleModal = () => this.setState({ showModal: !this.state.showModal });
+
+  renderAdoptModal() {
+    return (
+      <Modal>
+        <h2>Whould you like to adopt {name}?</h2>
+        <div className="buttons">
+          <button onClick={this.adopt}>Yes</button>
+          <button onClick={this.toggleModal}>No</button>
+        </div>
+      </Modal>
+    );
+  }
   renderDetails({ breed, name, city, state, description }) {
+    const adoptModal = this.state.showModal ? this.renderAdoptModal() : null;
+
     return (
       <div>
         <h1>
@@ -41,7 +58,8 @@ class Details extends Component {
           {city}, {state}
         </div>
         <div>{description}</div>
-        <button>Adopt {name}</button>
+        <button onClick={this.toggleModal}>Adopt {name}</button>
+        {adoptModal}
       </div>
     );
   }
