@@ -1,4 +1,4 @@
-Theory: https://btholt.github.io/complete-intro-to-react-v6/usecontext
+Theory: https://btholt.github.io/complete-intro-to-react-v6
 
 - div#root: NOT RENDERED anything: react is going to render App here
 - https://unpkg.com/react@17.0.1/umd/react.development.js: allows to load npm package from the proyect loaded by npm as service resource

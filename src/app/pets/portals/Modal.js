@@ -1,7 +1,7 @@
 import { createPortal } from "react-dom";
 import { useRef, useEffect } from "react";
 
-const getModalReference = () => {
+const ModalReference = () => {
   const modalRef = useRef(null);
   const hasInitializeRendered = modalRef.current;
 
@@ -14,7 +14,7 @@ const getModalReference = () => {
 
 const Modal = (props) => {
   const modalRoot = document.getElementById("modal");
-  const modalRef = getModalReference();
+  const modalRef = ModalReference();
   const fragment = props.children;
   const modalPortal = createPortal(fragment, modalRef);
 

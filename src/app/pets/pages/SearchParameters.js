@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect, useContext } from "react";
-import PetList from "./../components/PetList";
+import PetList from "../components/PetList";
 import useBreedList from "../hooks/useBreedList";
 import { ReaderMode } from "../providers/ReaderMode";
 
