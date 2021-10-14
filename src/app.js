@@ -3,7 +3,7 @@ import { StrictMode, Component } from "react";
 import ReactDOM from "react-dom";
 import SearchParameters from "./pages/SearchParameters";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import { DetailsWithRouter, DetailsWithErrorBoundary } from "./pages/Details";
+import { DetailsWithErrorBoundary } from "./pages/Details";
 import { ReaderMode, READ_MODE } from "./providers/ReaderMode";
 
 export default class App extends Component {
@@ -25,7 +25,7 @@ export default class App extends Component {
     return (
       <Switch>
         <Route path="/details/:id">
-          <DetailsWithErrorBoundary theme={this.state.reader} />
+          <DetailsWithErrorBoundary />
         </Route>
         <Route path="/">
           <SearchParameters location="Seattle" />

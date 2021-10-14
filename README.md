@@ -114,3 +114,6 @@ se utiliza para controlar los errores de ejecucion y redireccionar al usuario a 
 
 - Context
 Se utiliza para definir variables de contexto que podamos leer y sobreescribir en distintas partes de la aplicacion
+para setear un contexto: <MyContext.Provider value={myState}>
+para obtener el contexto en un componete de tipo clase: <MyContext.consumer>{(contextValue) => (<Component contextValue={contextValue}>)}</<MyContext.consumer>
+para obtener el contexto en un Componentes de tipo function: const contextValue = React.useContext(MyContext)

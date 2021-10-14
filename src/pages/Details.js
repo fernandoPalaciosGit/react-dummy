@@ -1,4 +1,4 @@
-import { Component, useContext } from "react";
+import { Component } from "react";
 import { withRouter } from "react-router-dom";
 import Carousel from "../components/Carousel";
 import ErrorBoundary from "../components/ErrorBoundary";
@@ -48,10 +48,14 @@ class Details extends Component {
 
   renderDescription(details) {
     return (
-      <div className={`details ${this.props.theme}`}>
-        <Carousel images={details.images} />
-        {this.renderDetails(details)}
-      </div>
+      <ReaderMode.Consumer>
+        {(theme) => (
+          <div className={`details ${theme}`}>
+            <Carousel images={details.images} />
+            {this.renderDetails(details)}
+          </div>
+        )}
+      </ReaderMode.Consumer>
     );
   }
 
