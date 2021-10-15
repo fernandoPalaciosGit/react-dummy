@@ -26,7 +26,7 @@ const RefComponent = () => {
 
   return (
     <div>
-      <h3>Ref Example</h3>
+      <h3>useRef Example</h3>
       <ul>
         <small>
           <strong>CAMBIO DE VALOR EN EL RENDER</strong>
