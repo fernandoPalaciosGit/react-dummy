@@ -5,4 +5,4 @@ export const READ_MODE = {
   DARK: "dark-Mode",
   CAUCASIAN: "caucasian-Mode",
 };
-export const ReaderMode = createContext([READ_MODE.LIGHT, () => {}]);
+export const ReaderMode = createContext(READ_MODE.LIGHT);
