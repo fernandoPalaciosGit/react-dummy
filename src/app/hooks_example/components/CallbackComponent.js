@@ -1,12 +1,5 @@
 import { useState, useEffect, useCallback, memo } from "react";
-
-const fibonacci = (n) => {
-  if (n <= 1) {
-    return 1;
-  }
-
-  return fibonacci(n - 1) + fibonacci(n - 2);
-};
+import getFibonacci from "../utils/Fibonacci";
 
 const ExpensiveComputationComponent = memo(({ compute, count }) => {
   return (
@@ -31,7 +24,7 @@ const CallbackComponent = () => {
         current count: {count}
       </button>
       <ExpensiveComputationComponent
-        compute={useCallback(fibonacci, [])}
+        compute={useCallback(getFibonacci, [])}
         count={count}
       />
     </div>

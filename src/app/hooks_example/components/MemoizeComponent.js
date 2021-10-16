@@ -1,14 +1,6 @@
 import { useMemo, useState, memo } from "react";
 import React from "react";
-
-import Fibonacci from "fibonacci";
-
-const getFibonacci = (fibo) => {
-  console.log(
-    "number of Fibonacci calculation is a hard process: please rendered only if necessary"
-  );
-  return Fibonacci.iterate(fibo).number;
-};
+import getFibonacci from "../utils/Fibonacci";
 
 const FibonacciMemo = memo(({ fibo }) => {
   return getFibonacci(fibo);
