@@ -1,3 +1,4 @@
+import CallbackComponent from "./components/CallbackComponent";
 import StateComponent from "./components/StateComponent";
 import EffectComponent from "./components/EffectComponent";
 import ContextComponent from "./components/ContextComponent";
@@ -19,6 +20,8 @@ const HooksExampleApp = () => {
       <ReducerComponent />
       <hr />
       <MemoizeComponent />
+      <hr />
+      <CallbackComponent />
     </div>
   );
 };
