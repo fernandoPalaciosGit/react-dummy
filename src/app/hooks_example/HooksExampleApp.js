@@ -5,6 +5,7 @@ import ContextComponent from "./components/ContextComponent";
 import RefComponent from "./components/RefComponent";
 import ReducerComponent from "./components/ReducerComponent";
 import MemoizeComponent from "./components/MemoizeComponent";
+import CallbackComponent2 from "./components/CallbackComponent2";
 
 const HooksExampleApp = () => {
   return (
@@ -22,6 +23,8 @@ const HooksExampleApp = () => {
       <MemoizeComponent />
       <hr />
       <CallbackComponent />
+      <hr />
+      <CallbackComponent2 />
     </div>
   );
 };
