@@ -6,7 +6,7 @@ const updateTime = (time) => {
   return new Date(time);
 };
 
-const EffectComponent = () => {
+const UseEffectComponentExample = () => {
   const [time, setTime] = useState(new Date());
 
   // schedule on lifecycle render
@@ -28,4 +28,4 @@ const EffectComponent = () => {
   );
 };
 
-export default EffectComponent;
+export default UseEffectComponentExample;

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const StateComponent = () => {
+const UseStateComponentExample = () => {
   const [isGreen, setIsGreen] = useState(false);
   const getColor = () => (isGreen ? "green" : "orange");
 
@@ -12,4 +12,4 @@ const StateComponent = () => {
   );
 };
 
-export default StateComponent;
+export default UseStateComponentExample;

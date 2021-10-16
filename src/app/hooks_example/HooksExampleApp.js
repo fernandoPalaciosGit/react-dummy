@@ -1,30 +1,33 @@
-import CallbackComponent from "./components/CallbackComponent";
-import StateComponent from "./components/StateComponent";
-import EffectComponent from "./components/EffectComponent";
-import ContextComponent from "./components/ContextComponent";
-import RefComponent from "./components/RefComponent";
-import ReducerComponent from "./components/ReducerComponent";
-import MemoizeComponent from "./components/MemoizeComponent";
-import CallbackComponent2 from "./components/CallbackComponent2";
+import UseStateComponentExample from "./components/UseCallbackComponentExample";
+import UseEffectComponentExample from "./components/UseEffectComponentExample";
+import UseContextComponentExample from "./components/UseContextComponentExample";
+import UseRefComponentExample from "./components/UseRefComponentExample";
+import UseReducerComponentExample from "./components/UseReducerComponentExample";
+import UseMemoComponentExample from "./components/UseMemoComponentExample";
+import UseCallbackComponentExample from "./components/UseCallbackComponentExample";
+import UseCallbackComponent2Example from "./components/UseCallbackComponent2Example";
+import UseLayoutEffectComponentExample from "./components/UseLayoutEffectComponentExample";
 
 const HooksExampleApp = () => {
   return (
     <div>
-      <StateComponent />
+      <UseStateComponentExample />
       <hr />
-      <EffectComponent />
+      <UseEffectComponentExample />
       <hr />
-      <ContextComponent />
+      <UseContextComponentExample />
       <hr />
-      <RefComponent />
+      <UseRefComponentExample />
       <hr />
-      <ReducerComponent />
+      <UseReducerComponentExample />
       <hr />
-      <MemoizeComponent />
+      <UseMemoComponentExample />
       <hr />
-      <CallbackComponent />
+      <UseCallbackComponentExample />
       <hr />
-      <CallbackComponent2 />
+      <UseCallbackComponent2Example />
+      <hr />
+      <UseLayoutEffectComponentExample />
     </div>
   );
 };

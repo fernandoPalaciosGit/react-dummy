@@ -16,7 +16,7 @@ const ExpensiveComputationComponent = memo(({ computeFibonacci, count }) => {
   );
 });
 
-const CallbackComponent = () => {
+const UseCallbackComponentExample = () => {
   const [time, setTime] = useState(new Date());
   const [count, setCount] = useState(1);
   useEffect(() => {
@@ -39,4 +39,4 @@ const CallbackComponent = () => {
   );
 };
 
-export default CallbackComponent;
+export default UseCallbackComponentExample;

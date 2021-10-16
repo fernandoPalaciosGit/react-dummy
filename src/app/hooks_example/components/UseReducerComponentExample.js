@@ -24,7 +24,7 @@ const RgbActionComponent = ({ action, dispatch }) => {
   );
 };
 
-const ReducerComponent = () => {
+const UseReducerComponentExample = () => {
   // const [selector, dispatch];
   const [rgbState, rgbDispatch] = useReducer(rgbReducer, null);
   const { r, g, b } = rgbState || {};
@@ -45,4 +45,4 @@ const ReducerComponent = () => {
   );
 };
 
-export default ReducerComponent;
+export default UseReducerComponentExample;

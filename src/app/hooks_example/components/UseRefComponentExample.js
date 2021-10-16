@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 
 // se utiliza para mantener un fragmento aislado del ciclo de vida del rendering de React
 // por ejemplo si queremos reutilizar un mismo fragmento en diferentes Componentes sin reinstanciarlos
-const RefComponent = () => {
+const UseRefComponentExample = () => {
   const [stateIndex, setStateIndex] = useState(0);
   const refIndex = useRef(0); // use Ref esta aislada del proceso del lifecycle de este componente, por lo que mantendra siempre el estado
 
@@ -39,4 +39,4 @@ const RefComponent = () => {
   );
 };
 
-export default RefComponent;
+export default UseRefComponentExample;

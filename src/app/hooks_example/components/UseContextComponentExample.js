@@ -57,7 +57,7 @@ const FirstLevelComponent = () => {
   );
 };
 
-const ContextComponent = () => {
+const UseContextComponentExample = () => {
   const [name, setName] = useState({
     genderHierarchic: 1,
     name: "Fernando",
@@ -83,4 +83,4 @@ const ContextComponent = () => {
   );
 };
 
-export default ContextComponent;
+export default UseContextComponentExample;

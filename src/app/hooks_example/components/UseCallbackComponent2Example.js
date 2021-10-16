@@ -20,7 +20,7 @@ const RenderPets = memo(({ numberPets, logPet }) => {
   );
 });
 
-const CallbackComponent2 = () => {
+const UseCallbackComponent2Example = () => {
   const [numPets, setNumPets] = useState(0);
   const logPet = ({ currentTarget }) => alert(currentTarget.dataset.pet);
 
@@ -34,4 +34,4 @@ const CallbackComponent2 = () => {
   );
 };
 
-export default CallbackComponent2;
+export default UseCallbackComponent2Example;

@@ -6,7 +6,7 @@ const FibonacciMemo = memo(({ fibo }) => {
   return getFibonacci(fibo);
 });
 
-const MemoizeComponent = () => {
+const UseMemoComponentExample = () => {
   // cada vez que cambiamnos el estado del titulo con el  isGreen, renderizamos el componente y volveriamo0s a calcular la serie  de Finbonachi
   // si utilizamos el useMemo, cada vez que cambiasemos un estado que NO este relacionado con el valor de Fibonachi, NO se re-calcularia
   const [green, isGreen] = useState(false);
@@ -38,4 +38,4 @@ const MemoizeComponent = () => {
   );
 };
 
-export default MemoizeComponent;
+export default UseMemoComponentExample;
