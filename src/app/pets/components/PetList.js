@@ -3,7 +3,7 @@ import Pet from "./Pet";
 
 const PetList = ({ list = [] }) => {
   return (
-    <div className="search">
+    <div className="search grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       {list.length === 0 ? (
         <h3>No Pets Found</h3>
       ) : (
