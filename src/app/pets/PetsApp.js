@@ -50,7 +50,7 @@ export default class PetsApp extends Component {
 
   render() {
     return (
-      <div>
+      <div className='p-0 m-0 page-background'>
         <Router>
           <this.Header />
           <this.ToggleReader />
