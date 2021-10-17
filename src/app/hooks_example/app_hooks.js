@@ -1,11 +1,11 @@
 import React from "react";
 import { StrictMode } from "react";
 import ReactDOM from "react-dom";
-import PetsApp from "./app/pets/PetsApp.js";
+import HooksExampleApp from "./features/HooksExampleApp.js";
 
 ReactDOM.render(
   <StrictMode>
-    <PetsApp />
+    <HooksExampleApp />
   </StrictMode>,
   document.getElementById("root")
 );

@@ -28,10 +28,14 @@
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3"
   },
   "scripts": {
+    "start:pets": "npm run build && node dist-server/index.js",
+    "build:pets": "npm run build:server-pets && npm run build:client-pets",
+    "build:server-pets": "parcel build -d dist-server --target src/app/pets/server.js",
+    "build:client-pets": "parcel build --public-url ./dist/ src/app/pets/index_pets.html",
     "format": "prettier --write \"./src/**/*.{js,jsx}\"",
     "lint": "eslint \"./src/**/*.{js,jsx}\" --quiet",
-    "dev:pets": "parcel ./src/index_pets.html",
-    "dev:hooks": "parcel ./src/index_hooks.html"
+    "dev:pets": "parcel src/app/pets/index_pets.html",
+    "dev:hooks": "parcel src/app/hooks_example/index_hooks.html"
   },
   "browserslist": [
     "last 2 Chrome versions"

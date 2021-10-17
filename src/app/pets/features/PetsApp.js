@@ -1,10 +1,10 @@
 import React from "react";
 import {Component, lazy, Suspense} from "react";
 import {BrowserRouter as Router, Route, Switch, Link} from "react-router-dom";
-import {ReaderMode, READ_MODE} from "./providers/ReaderMode";
+import {ReaderMode, READ_MODE} from "../providers/ReaderMode";
 
-const SearchParameters = lazy(() => import('./pages/SearchParameters'));
-const DetailsWithErrorBoundary = lazy(() => import('./pages/Details'));
+const SearchParameters = lazy(() => import('../pages/SearchParameters'));
+const DetailsWithErrorBoundary = lazy(() => import('../pages/Details'));
 
 export default class PetsApp extends Component {
   state = {
