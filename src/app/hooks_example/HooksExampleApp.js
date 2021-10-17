@@ -7,6 +7,7 @@ import UseMemoComponentExample from "./components/UseMemoComponentExample";
 import UseCallbackComponentExample from "./components/UseCallbackComponentExample";
 import UseCallbackComponent2Example from "./components/UseCallbackComponent2Example";
 import UseLayoutEffectComponentExample from "./components/UseLayoutEffectComponentExample";
+import UseImperativeMethodsExample from "./components/UseImperativeMethodsExample";
 
 const HooksExampleApp = () => {
   return (
@@ -28,6 +29,8 @@ const HooksExampleApp = () => {
       <UseCallbackComponent2Example />
       <hr />
       <UseLayoutEffectComponentExample />
+      <hr />
+      <UseImperativeMethodsExample />
     </div>
   );
 };
