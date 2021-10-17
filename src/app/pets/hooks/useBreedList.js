@@ -18,8 +18,10 @@ export default function useBreedList(animal) {
   useEffect(() => {
     if (!animal) {
       setBreedList([]);
+      setState("unloaded");
     } else if (breedCached[animal]) {
       setBreedList(breedCached[animal]);
+      setState("loaded");
     } else {
       setBreedList([]);
       setState("loading");

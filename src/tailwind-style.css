@@ -2,6 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+.dark-Mode.search-params form,
+.dark-Mode.details,
+.dark-Mode .search,
+.dark-Mode #modal > div {
+    background: #838fc1;
+}
+
 .page-background {
     background: url(http://pets-images.dev-apis.com/pets/wallpaperA.jpg);
+}
+
+@layer components {
+    .search-label {
+        margin-bottom: 15px;
+        padding-top: 15px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .search-control {
+        padding: 8px 15px;
+        width: 300px;
+        border-radius: 2px;
+    }
 }
