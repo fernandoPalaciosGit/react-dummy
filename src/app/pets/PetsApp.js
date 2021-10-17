@@ -1,9 +1,10 @@
 import React from "react";
-import { Component } from "react";
-import SearchParameters from "./pages/SearchParameters";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import { DetailsWithErrorBoundary } from "./pages/Details";
-import { ReaderMode, READ_MODE } from "./providers/ReaderMode";
+import {Component, lazy, Suspense} from "react";
+import {BrowserRouter as Router, Route, Switch, Link} from "react-router-dom";
+import {ReaderMode, READ_MODE} from "./providers/ReaderMode";
+
+const SearchParameters = lazy(() => import('./pages/SearchParameters'));
+const DetailsWithErrorBoundary = lazy(() => import('./pages/Details'));
 
 export default class PetsApp extends Component {
   state = {
@@ -24,10 +25,10 @@ export default class PetsApp extends Component {
     return (
       <Switch>
         <Route path="/details/:id">
-          <DetailsWithErrorBoundary />
+          <DetailsWithErrorBoundary/>
         </Route>
         <Route path="/">
-          <SearchParameters location="Seattle" />
+          <SearchParameters location="Seattle"/>
         </Route>
       </Switch>
     );
@@ -41,24 +42,29 @@ export default class PetsApp extends Component {
     ));
     return (
       <select
-        onChange={({ target }) => this.setState({ reader: target.value })}
+        onChange={({target}) => this.setState({reader: target.value})}
       >
         {options}
       </select>
     );
   };
 
+  // se lanza cada vez que Suspend de tenta que se esta cargando un import de manera lazy
+  LoadingImportAssets = () => <h3>Loading routes...</h3>;
+
   render() {
     return (
       <div className='p-0 m-0 page-background'>
-        <Router>
-          <this.Header />
-          <this.ToggleReader />
+        <Suspense fallback={<this.LoadingImportAssets/>}>
+          <Router>
+            <this.Header/>
+            <this.ToggleReader/>
 
-          <ReaderMode.Provider value={this.state.reader}>
-            <this.Body />
-          </ReaderMode.Provider>
-        </Router>
+            <ReaderMode.Provider value={this.state.reader}>
+              <this.Body/>
+            </ReaderMode.Provider>
+          </Router>
+        </Suspense>
       </div>
     );
   }

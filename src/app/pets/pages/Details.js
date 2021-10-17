@@ -1,21 +1,21 @@
-import { Component } from "react";
-import { withRouter } from "react-router-dom";
+import {Component, lazy} from "react";
+import {withRouter} from "react-router-dom";
 import Carousel from "../components/Carousel";
 import ErrorBoundary from "../components/ErrorBoundary";
-import { ReaderMode } from "../providers/ReaderMode";
-import Modal from "../portals/Modal";
+import {ReaderMode} from "../providers/ReaderMode";
+const Modal = lazy(() => import('../portals/Modal'));
 
 class Details extends Component {
   API = "https://pets-v2.dev-apis.com/pets";
-  state = { loading: true, numberOfResults: 0, showModal: false };
+  state = {loading: true, numberOfResults: 0, showModal: false};
 
   async getPet(petId) {
     return await fetch(`${this.API}?id=${petId}`)
       .then((res) => res.json())
       .then(
-        ({ pets, numberOfResults }) => ({ ...pets[0], numberOfResults } || {})
+        ({pets, numberOfResults}) => ({...pets[0], numberOfResults} || {})
       )
-      .catch(() => ({ numberOfResults: 0 }));
+      .catch(() => ({numberOfResults: 0}));
   }
 
   // execute once after the first render
@@ -33,9 +33,9 @@ class Details extends Component {
   };
 
   adopt = () => (window.location = "http://bit.ly/adopt");
-  toggleModal = () => this.setState({ showModal: !this.state.showModal });
+  toggleModal = () => this.setState({showModal: !this.state.showModal});
 
-  AdoptModal = ({ name }) => {
+  AdoptModal = ({name}) => {
     return (
       <Modal>
         <h2>Whould you like to adopt {name}?</h2>
@@ -47,9 +47,9 @@ class Details extends Component {
     );
   };
 
-  Details = ({ breed, name, city, state, description }) => {
+  Details = ({breed, name, city, state, description}) => {
     const adoptModal = this.state.showModal ? (
-      <this.AdoptModal name={name} />
+      <this.AdoptModal name={name}/>
     ) : null;
 
     return (
@@ -72,7 +72,7 @@ class Details extends Component {
       <ReaderMode.Consumer>
         {(theme) => (
           <div className={`details ${theme}`}>
-            <Carousel images={details.images} />
+            <Carousel images={details.images}/>
             <this.Details {...details} />
           </div>
         )}
@@ -90,7 +90,7 @@ class Details extends Component {
     }
 
     return this.state.loading ? (
-      <this.Loader />
+      <this.Loader/>
     ) : (
       <this.Description {...this.state} />
     );
@@ -103,3 +103,4 @@ export const DetailsWithErrorBoundary = (props) => (
     <DetailsWithRouter {...props} />
   </ErrorBoundary>
 );
+export default DetailsWithErrorBoundary;
