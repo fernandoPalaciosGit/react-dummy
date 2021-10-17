@@ -1,3 +1,7 @@
+####$ npm i
+####$ dev:pets
+####$ dev:hooks
+
 Theory: https://btholt.github.io/complete-intro-to-react-v6
 
 - div#root: NOT RENDERED anything: react is going to render App here

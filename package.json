@@ -29,8 +29,8 @@
   "scripts": {
     "format": "prettier --write \"./src/**/*.{js,jsx}\"",
     "lint": "eslint \"./src/**/*.{js,jsx}\" --quiet",
-    "dev": "parcel ./src/index.html",
-    "build": "parcel build ./src/index.html"
+    "dev:pets": "parcel ./src/index_pets.html",
+    "dev:hooks": "parcel ./src/index_hooks.html"
   },
   "browserslist": [
     "last 2 Chrome versions"
