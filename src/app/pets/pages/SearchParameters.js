@@ -91,9 +91,12 @@ const SearchParameters = (props) => {
         </label>
 
         <button
-          style={{backgroundColor: '#2563eb'}}
+          style={{ backgroundColor: "#2563eb" }}
           className="rounded px-6 py-2 color text-white hover:opacity-50 border-none"
-          type="submit">Submit</button>
+          type="submit"
+        >
+          Submit
+        </button>
       </form>
       <PetList list={pets} />
     </div>

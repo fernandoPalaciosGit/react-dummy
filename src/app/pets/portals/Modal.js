@@ -1,6 +1,6 @@
 import { createPortal } from "react-dom";
 import { useRef, useEffect } from "react";
-import '../../styles/style_modal.css';
+import "../../styles/style_modal.css";
 
 const ModalReference = () => {
   const modalRef = useRef(null);
@@ -12,9 +12,10 @@ const ModalReference = () => {
 
   return modalRef.current;
 };
+let modal = null;
 
 const Modal = (props) => {
-  const modalRoot = document.getElementById("modal");
+  const modalRoot = modal || document.getElementById("modal");
   const modalRef = ModalReference();
   const fragment = props.children;
   const modalPortal = createPortal(fragment, modalRef);

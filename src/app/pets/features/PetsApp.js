@@ -1,10 +1,11 @@
 import React from "react";
-import {Component, lazy, Suspense} from "react";
-import {BrowserRouter as Router, Route, Switch, Link} from "react-router-dom";
-import {ReaderMode, READ_MODE} from "../providers/ReaderMode";
+import { Component, lazy, Suspense } from "react";
+import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+import { ReaderMode, READ_MODE } from "../providers/ReaderMode";
+import { StrictMode } from "react";
 
-const SearchParameters = lazy(() => import('../pages/SearchParameters'));
-const DetailsWithErrorBoundary = lazy(() => import('../pages/Details'));
+const SearchParameters = lazy(() => import("../pages/SearchParameters"));
+const DetailsWithErrorBoundary = lazy(() => import("../pages/Details"));
 
 export default class PetsApp extends Component {
   state = {
@@ -25,10 +26,10 @@ export default class PetsApp extends Component {
     return (
       <Switch>
         <Route path="/details/:id">
-          <DetailsWithErrorBoundary/>
+          <DetailsWithErrorBoundary />
         </Route>
         <Route path="/">
-          <SearchParameters location="Seattle"/>
+          <SearchParameters location="Seattle" />
         </Route>
       </Switch>
     );
@@ -42,7 +43,7 @@ export default class PetsApp extends Component {
     ));
     return (
       <select
-        onChange={({target}) => this.setState({reader: target.value})}
+        onChange={({ target }) => this.setState({ reader: target.value })}
       >
         {options}
       </select>
@@ -54,18 +55,20 @@ export default class PetsApp extends Component {
 
   render() {
     return (
-      <div className='p-0 m-0 page-background'>
-        <Suspense fallback={<this.LoadingImportAssets/>}>
-          <Router>
-            <this.Header/>
-            <this.ToggleReader/>
+      <StrictMode>
+        <div className="p-0 m-0 page-background">
+          <Suspense fallback={<this.LoadingImportAssets />}>
+            <BrowserRouter>
+              <this.Header />
+              <this.ToggleReader />
 
-            <ReaderMode.Provider value={this.state.reader}>
-              <this.Body/>
-            </ReaderMode.Provider>
-          </Router>
-        </Suspense>
-      </div>
+              <ReaderMode.Provider value={this.state.reader}>
+                <this.Body />
+              </ReaderMode.Provider>
+            </BrowserRouter>
+          </Suspense>
+        </div>
+      </StrictMode>
     );
   }
 }
