@@ -3,8 +3,13 @@ import { Component, lazy, Suspense } from "react";
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import { READ_MODE } from "../providers/ReaderMode";
 import { StrictMode } from "react";
-import { Provider as ReduxProvider, useSelector } from "react-redux";
+import {
+  Provider as ReduxProvider,
+  useSelector,
+  useDispatch,
+} from "react-redux";
 import store from "./../store";
+import updateTheme from "../store/actions/themeAction";
 
 const SearchParameters = lazy(() => import("../pages/SearchParameters"));
 const DetailsWithErrorBoundary = lazy(() => import("../pages/Details"));
@@ -35,16 +40,17 @@ export default class PetsApp extends Component {
 
   ToggleReader = () => {
     const theme = useSelector(({ theme }) => theme);
-    const options = Object.entries(READ_MODE).map(([key, reader]) => (
-      <option key={key} value={reader}>
+    const dispatch = useDispatch();
+    const options = Object.entries(READ_MODE).map(([key, theme]) => (
+      <option key={key} value={theme}>
         {key}
       </option>
     ));
-    // change to update reader
+
     return (
       <select
         defaultValue={theme}
-        onChange={({ target }) => this.setState({ reader: target.value })}
+        onChange={({ target }) => dispatch(updateTheme(target.value))}
       >
         {options}
       </select>

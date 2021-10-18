@@ -2,7 +2,10 @@ import React from "react";
 import { useState, useEffect } from "react";
 import PetList from "../components/PetList";
 import useBreedList from "../hooks/useBreedList";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import updateBreed from "../store/actions/breedAction";
+import updateAnimal from "../store/actions/animalAction";
+import updateLocation from "../store/actions/locationAction";
 
 const API = "https://pets-v2.dev-apis.com/pets";
 const ANIMALS = ["dog", "cat", "bird", "horse"];
@@ -11,6 +14,7 @@ const SearchParameters = () => {
   const { location, breed, animal, theme } = useSelector((store) => store);
   const [breeds, statusBreeds] = useBreedList(animal);
   const [pets, setPets] = useState([]);
+  const dispatch = useDispatch();
 
   function onDestroyComponent() {
     console.log("---------> Destroyed component");
@@ -30,6 +34,11 @@ const SearchParameters = () => {
     return () => onDestroyComponent();
   }, [animal, breed, location]);
 
+  function handleOnChangeAnimal({ target }) {
+    dispatch(updateAnimal(target.value));
+    dispatch(updateBreed(""));
+  }
+
   return (
     <div className={`search-params ${theme} my-0 mx-auto w-11/12`}>
       <h2>Search Pets Page</h2>
@@ -47,7 +56,7 @@ const SearchParameters = () => {
             id="search-location"
             type="text"
             placeholder="location"
-            onChange={({ target }) => target.value}
+            onChange={({ target }) => dispatch(updateLocation(target.value))}
             value={location}
           />
         </label>
@@ -58,7 +67,7 @@ const SearchParameters = () => {
             className="search-control"
             id="animal-list"
             value={animal}
-            onChange={({ target }) => target.value}
+            onChange={handleOnChangeAnimal}
           >
             <option />
             {ANIMALS.map((animal) => (
@@ -76,7 +85,7 @@ const SearchParameters = () => {
             disabled={breeds.length === 0}
             id="breed-list"
             value={breed}
-            onChange={({ target }) => target.value}
+            onChange={({ target }) => dispatch(updateBreed(target.value))}
           >
             <option />
             {breeds.map((breed) => (
