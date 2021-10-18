@@ -4,6 +4,7 @@
   "description": "- div#root: NOT RENDERED anything: react is going to render App here - https://unpkg.com/react@17.0.1/umd/react.development.js: allows to load npm package from the proyect loaded by npm as service resource - Componentes de primer orden: todo en React son componentes, es objetivo es la mudularizacion de la infraestructura de la aplicacion a traves d eetos elementos incluso la funcion App es un componente (arranque de la aplicacion). - para construir ese componente com un elemento de tipo render en la aplciacion (construirlo en el DOM) necesitamos la libreria de ReactDom ReactDOM.render(React.createElement(App), document.getElementById('root')); - React.createElement: es la interfaz basica de ltoda la aplicaiocn, esta oculta por la utulizada de JSX (templating para html para ejecutar en el render). esta funcion permite instanciar los componentes de tipo React (si los quieres reutilizar como DOM Elements) - Capitalizacion de las funciones de primer orden de React: solo asi ReactDOM las considera como componentes - crear componente de tipo React: React.createElement(funcionConLogicaApp) - indexacin de componmentes de tpo react: para que el livecycle del proceso de render de react funcione, necesita indexar de manera unica cada componente que instanciamos,  de manera que si no le proporcionamos este valor como property (en el createElement()) considera como indexacion el tag del DOm que representa, y como los tags de html son reutilizable siempre aparecera como error: \"Warning: Each child in a list should have a unique \"key\" prop. \"",
   "main": "index.js",
   "dependencies": {
+    "@jest/globals": "^27.3.0",
     "express": "^4.17.1",
     "fibonacci": "^1.6.10",
     "history": "^5.0.1",
@@ -21,11 +22,13 @@
     "@babel/preset-react": "^7.12.13",
     "@tailwindcss/forms": "^0.2.1",
     "@tailwindcss/postcss7-compat": "^2.0.3",
+    "@testing-library/react": "^11.2.5",
     "autoprefixer": "^9.8.6",
     "eslint": "^7.18.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-react": "^7.26.1",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "jest": "^26.6.3",
     "parcel": "^1.12.3",
     "postcss": "^7.0.35",
     "prettier": "^2.4.1",
@@ -40,7 +43,9 @@
     "format": "prettier --write \"./src/**/*.{js,jsx}\"",
     "lint": "eslint \"./src/**/*.{js,jsx}\" --quiet",
     "dev:pets": "parcel src/app/pets/index_pets.html",
-    "dev:hooks": "parcel src/app/hooks_example/index_hooks.html"
+    "dev:hooks": "parcel src/app/hooks_example/index_hooks.html",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "browserslist": [
     "last 2 Chrome versions"
