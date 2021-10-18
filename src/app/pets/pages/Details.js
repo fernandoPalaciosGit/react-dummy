@@ -2,7 +2,8 @@ import { Component, lazy } from "react";
 import { withRouter } from "react-router-dom";
 import Carousel from "../components/Carousel";
 import ErrorBoundary from "../components/ErrorBoundary";
-import { ReaderMode } from "../providers/ReaderMode";
+import { useSelector } from "react-redux";
+
 const Modal = lazy(() => import("../portals/Modal"));
 
 class Details extends Component {
@@ -68,15 +69,12 @@ class Details extends Component {
   };
 
   Description = (details) => {
+    const theme = useSelector(({ theme }) => theme);
     return (
-      <ReaderMode.Consumer>
-        {(theme) => (
-          <div className={`details ${theme}`}>
-            <Carousel images={details.images} />
-            <this.Details {...details} />
-          </div>
-        )}
-      </ReaderMode.Consumer>
+      <div className={`details ${theme}`}>
+        <Carousel images={details.images} />
+        <this.Details {...details} />
+      </div>
     );
   };
 

@@ -1,17 +1,15 @@
 import React from "react";
 import { Component, lazy, Suspense } from "react";
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
-import { ReaderMode, READ_MODE } from "../providers/ReaderMode";
+import { READ_MODE } from "../providers/ReaderMode";
 import { StrictMode } from "react";
+import { Provider as ReduxProvider, useSelector } from "react-redux";
+import store from "./../store";
 
 const SearchParameters = lazy(() => import("../pages/SearchParameters"));
 const DetailsWithErrorBoundary = lazy(() => import("../pages/Details"));
 
 export default class PetsApp extends Component {
-  state = {
-    reader: READ_MODE.LIGHT,
-  };
-
   Header = () => {
     return (
       <header className="w-full mb-10 text-center p-7 bg-gradient-to-b from-purple-400 via-pink-500 to-red-500">
@@ -29,20 +27,23 @@ export default class PetsApp extends Component {
           <DetailsWithErrorBoundary />
         </Route>
         <Route path="/">
-          <SearchParameters location="Seattle" />
+          <SearchParameters />
         </Route>
       </Switch>
     );
   };
 
   ToggleReader = () => {
+    const theme = useSelector(({ theme }) => theme);
     const options = Object.entries(READ_MODE).map(([key, reader]) => (
       <option key={key} value={reader}>
         {key}
       </option>
     ));
+    // change to update reader
     return (
       <select
+        defaultValue={theme}
         onChange={({ target }) => this.setState({ reader: target.value })}
       >
         {options}
@@ -59,12 +60,11 @@ export default class PetsApp extends Component {
         <div className="p-0 m-0 page-background">
           <Suspense fallback={<this.LoadingImportAssets />}>
             <BrowserRouter>
-              <this.Header />
-              <this.ToggleReader />
-
-              <ReaderMode.Provider value={this.state.reader}>
+              <ReduxProvider store={store}>
+                <this.Header />
+                <this.ToggleReader />
                 <this.Body />
-              </ReaderMode.Provider>
+              </ReduxProvider>
             </BrowserRouter>
           </Suspense>
         </div>

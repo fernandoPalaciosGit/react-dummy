@@ -1,19 +1,16 @@
 import React from "react";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import PetList from "../components/PetList";
 import useBreedList from "../hooks/useBreedList";
-import { ReaderMode } from "../providers/ReaderMode";
+import { useSelector } from "react-redux";
 
 const API = "https://pets-v2.dev-apis.com/pets";
 const ANIMALS = ["dog", "cat", "bird", "horse"];
 
-const SearchParameters = (props) => {
-  const [location, setLocation] = useState(props.location);
-  const [breed, setBreed] = useState("");
-  const [animal, setAnimal] = useState("");
-  const [pets, setPets] = useState([]);
+const SearchParameters = () => {
+  const { location, breed, animal, theme } = useSelector((store) => store);
   const [breeds, statusBreeds] = useBreedList(animal);
-  const theme = useContext(ReaderMode);
+  const [pets, setPets] = useState([]);
 
   function onDestroyComponent() {
     console.log("---------> Destroyed component");
@@ -50,7 +47,7 @@ const SearchParameters = (props) => {
             id="search-location"
             type="text"
             placeholder="location"
-            onChange={({ target }) => setLocation(target.value)}
+            onChange={({ target }) => target.value}
             value={location}
           />
         </label>
@@ -61,7 +58,7 @@ const SearchParameters = (props) => {
             className="search-control"
             id="animal-list"
             value={animal}
-            onChange={({ target }) => setAnimal(target.value)}
+            onChange={({ target }) => target.value}
           >
             <option />
             {ANIMALS.map((animal) => (
@@ -79,7 +76,7 @@ const SearchParameters = (props) => {
             disabled={breeds.length === 0}
             id="breed-list"
             value={breed}
-            onChange={({ target }) => setBreed(target.value)}
+            onChange={({ target }) => target.value}
           >
             <option />
             {breeds.map((breed) => (
