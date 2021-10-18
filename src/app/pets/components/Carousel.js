@@ -20,6 +20,7 @@ export default class Carousel extends Component {
         alt="animal thumbnail"
         className={idx === this.state.active ? "active" : ""}
         data-index={idx}
+        data-testid={`thumbnail-${idx}`}
         onClick={this.setActiveThumbnail}
       />
     );
@@ -34,6 +35,7 @@ export default class Carousel extends Component {
       this.hasImages() && (
         <div className="carousel">
           <img
+            data-testid="main-image"
             src={this.props.images[this.state.active]}
             alt="animal picture"
           />

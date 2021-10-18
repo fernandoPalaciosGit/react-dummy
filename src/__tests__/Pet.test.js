@@ -3,17 +3,14 @@ import { test, expect, describe, afterEach } from "@jest/globals";
 import Pet from "../app/pets/components/Pet";
 import { StaticRouter } from "react-router-dom";
 
-function getPetWithImages(images) {
-  return (
+describe("Test thumbnail Pet image", () => {
+  let images;
+  let expectedThumb;
+  const getPetWithImages = (images) => (
     <StaticRouter>
       <Pet pet={{ images }} />
     </StaticRouter>
   );
-}
-
-describe("Test thumbnail Pet image", () => {
-  let images;
-  let expectedThumb;
 
   afterEach(async () => {
     const pet = render(getPetWithImages(images));
