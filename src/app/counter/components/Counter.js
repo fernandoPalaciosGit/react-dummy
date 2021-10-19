@@ -1,9 +1,21 @@
 import { Component } from "react";
 
+const counterStateKey = "counterState";
+const getStateFromLocalStorage = (state = {}) => {
+  return JSON.parse(
+    localStorage.getItem(counterStateKey) || JSON.stringify(state)
+  );
+};
+const setStateFromLocalStorage = (state = {}) => {
+  localStorage.setItem(counterStateKey, JSON.stringify(state));
+};
+
 export default class Counter extends Component {
-  // constructor(prop) { // By default
-  //   super(prop);
-  // }
+  constructor(prop) {
+    // By default
+    super(prop);
+    this.state = getStateFromLocalStorage(this.state);
+  }
 
   static defaultProps = {
     min: 100,
@@ -19,30 +31,42 @@ export default class Counter extends Component {
     this.setState(
       ({ counter }, { max, step }) =>
         counter < max && { counter: counter + step },
-      () =>
-        console.log(`incrementCounter: AFTER setState() ${this.state.counter}`)
+      () => {
+        setStateFromLocalStorage(this.state);
+        console.log(`incrementCounter: AFTER setState() ${this.state.counter}`);
+      }
     );
     console.log(`incrementCounter: BEFORE setState() ${this.state.counter}`);
   };
 
   decrementCounter = () => {
-    console.log(`decrementCounter: BEFORE CHANGE state = ${this.state.counter}`);
+    console.log(
+      `decrementCounter: BEFORE CHANGE state = ${this.state.counter}`
+    );
     this.setState(
       ({ counter }, { min, step }) =>
         counter > min && { counter: counter - step },
-      () => console.log(`decrementCounter: AFTER CHANGE state =  ${this.state.counter}`)
+      () => {
+        setStateFromLocalStorage(this.state);
+        console.log(
+          `decrementCounter: AFTER CHANGE state =  ${this.state.counter}`
+        );
+      }
     );
   };
 
-  resetCounter = () => this.setState({ counter: 0 });
+  resetCounter = () =>
+    this.setState({ counter: 0 }, () => setStateFromLocalStorage(this.state));
 
   componentDidMount() {
     // this.setState({counter: this.state.counter + 1});
     // this.setState({counter: this.state.counter + 1});
     // this.setState({counter: this.state.counter + 1}); // solamente se ejecuta este (1 render) -> counter = 1
+    ///////////////////////////////
     // this.setState({counter: 2});
     // this.setState({counter: 1});
     // this.setState({counter: 3}); // solamente se ejecuta este (1 render) -> counter = 3
+    ///////////////////////////////
     // this.setState(({counter}) => ({counter: ++counter}));
     // this.setState(({counter}) => ({counter: ++counter}));
     // this.setState(({counter}) => ({counter: ++counter})); // solamente se ejecuta este (1 render) -> counter = 3
