@@ -5,6 +5,12 @@ export default class Counter extends Component {
   //   super(prop);
   // }
 
+  static defaultProps = {
+    min: 100,
+    max: 100,
+    step: 1,
+  };
+
   state = {
     counter: 0,
   };
@@ -12,14 +18,19 @@ export default class Counter extends Component {
   incrementCounter = () => {
     this.setState(
       ({ counter }, { max, step }) =>
-        counter < max && { counter: counter + step }
+        counter < max && { counter: counter + step },
+      () =>
+        console.log(`incrementCounter: AFTER setState() ${this.state.counter}`)
     );
+    console.log(`incrementCounter: BEFORE setState() ${this.state.counter}`);
   };
 
   decrementCounter = () => {
+    console.log(`decrementCounter: BEFORE CHANGE state = ${this.state.counter}`);
     this.setState(
       ({ counter }, { min, step }) =>
-        counter > min && { counter: counter - step }
+        counter > min && { counter: counter - step },
+      () => console.log(`decrementCounter: AFTER CHANGE state =  ${this.state.counter}`)
     );
   };
 

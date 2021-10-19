@@ -175,4 +175,4 @@ this.setState(({counter}) => {counter : counter + 1}) // asincrono: a la cola de
 console.log(this.counter) // ---> 0 // el estado aun sigue siendo 0, no cambiara hasta que cada ciclo de render (asincrono) se ejecute
 SE RENDERIZARA 3 VECES -> al final imprimira 3
 
-### setState(state, props)
+### setState((state, props) => ̣{ /*return CHANGE state*/ }, () => { /*AFTER setState()*/});
