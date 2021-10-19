@@ -36,6 +36,7 @@
     "postcss": "^7.0.35",
     "prettier": "^2.4.1",
     "react-test-renderer": "^17.0.1",
+    "sass": "^1.43.2",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3",
     "typescript": "^4.2.2"
   },
@@ -48,6 +49,7 @@
     "lint": "eslint \"./src/**/*.{js,jsx}\" --quiet",
     "dev:pets": "parcel src/app/pets/index_pets.html",
     "dev:hooks": "parcel src/app/hooks_example/index_hooks.html",
+    "dev:counter": "parcel src/app/counter/index_counter.html",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"

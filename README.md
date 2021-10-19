@@ -75,11 +75,13 @@ just only type in your console: NODE_ENV=developmet && echo $NODE_ENV
 
 Si ademas seteamos NODE_ENV=production permitiremos al bundler de parcel minimizar el package para desplegar en los servidores de produccion
 
-Acivacion del modo strict mode
+### <StrictMode> Acivacion del modo strict mode
 es un parser de codigo que obliga al desarrollador a utilizar las interfaces y objetos que estan habilitados como  API segura
 strict mode = safe API
 es un linter, al igual que eslint, que evita el uso de codigo que el equipo de React no marca como permanente en la aplicacion
 No actua en el bundler final, no mejora el performance de la aplicacion 
+Tambien provoca que el render de los componentes se ejecuten 2 veces (bajo un mismo estado), esto es firzado por este modo para alertar al desarrollador de posibles side Effects
+Solamente extiende funcionalidad en modo desarrollador -> EN PRODUCCION NO SE EJECUTA DOS VECES
 
 - REACT ROUTING
 como todo en React, la libreria expone el routing como si fuera un componente : <RouteeDom/> y <Route>
@@ -124,3 +126,53 @@ para obtener el contexto en un Componentes de tipo function: const contextValue 
 
 - Portal : abstraer una interfaz fuera de la aplicacion de React -> Portal
 El uso es: tenemos una logica dentro de un componente que lo queremos externalizar fuera de la aplicacion
+
+
+
+### ¿porque el estado de un componente es lo mas imporetante en React?
+react es una Libreria que maneja el estado de la aplicacion (los estados de la UI) a traves de Componentes
+las aplicaciones antes de estos frameworks o librerias de manejo de estado, utilizaban el markup de html para definir el estado de la UI
+podriamos volcar informacion desde el servidor directamente sen la aplicaion, o la creamos en ejecucoin de JS y creamos ffragmentos con los cuales accedemos y modificamos el propio markup
+
+En react desde un principio lo unico que se maneja son Componentes que se interpretan como objectos de JS y que se transformaran en el DOM  (a traves de JSX, hooks...)
+En todo momento manipulamos es el estado de los COmponentes, que al final el propio framework se encargara de interpretar como fragmentos de DOM renderizados (virtual DOM)
+
+Y es el estado de cada componente al que se le da en React la importancia mas grande, ya que en las aplicaicones que escalan, lo primero que se vuelve problematico es el manejo de la informacion que circula a traves de los widgets
+
+
+###tipos de estado en el cliente
+- MODEL DATA: informacion que estable el servidor (sesion de cliente http), APIs, web service, que se vuelca como modelo de estado en alguna parte de la aplicacion  
+- UI/VIEW DATA: modelo de estado que crean los componentes o vista para manipula rla UI
+- SESSION STATES: modelo de estado que se almacena en sesion del navegador para compartir con otros contextos que estan fuera de la aplcacion o intercomunicados con diferentes sessiones de la aplicacion 
+- COMMMUNICATION: estado de aplcicacion ointermedia entre el cliente y otra fuente de datos. En esta fase de infomacion nos permitimos decidir donde volcar el estado en el cliente (por ejemnplo un middleware entre el server y el client que permite decidir como interactuamos con los errores)
+
+
+### setState es asyncrono
+todas los hooks que nos permiten definir el estado de la aplicacion y volver a renderizar el DOM que representa el componente son metodos asincronos
+
+this.state = {counter : 0}
+this.setState({counter : 4}) // asincrono: a la cola del lifecycle del render
+this.setState({counter : 3}) // asincrono: a la cola del lifecycle del render
+this.setState({counter : 4}) // asincrono: a la cola del lifecycle del render
+this.setState({counter : 1) // asincrono: a la cola del lifecycle del render
+console.log(this.counter) // ---> 0 // el estado aun sigue siendo 0, no cambiara hasta que cada ciclo de render (asincrono) se ejecute
+
+//  el DOM se renderizara 2 veces y al final imprimira 1
+// primer render : lee el counter inicial -> imprime 0
+// segundo render: lee el ultimo this.setState() -> imprime 1
+
+aunque this-.setState() se ejecuta 4 veces, ete al final solo enviara un unico ciclo de renderizacion al componente debido a que setState es asincrono,
+Entonces antes de iniciar el siguiente ciclo de render, mira cual es el ultimo estado de asignacion (el ultimo setState())
+
+
+### setState puede manejarse con un callback
+seguira comportandose de manera asincrona (el livecycle del render seguira apilandose en procesos de ejecucion), pero en este caso
+la lectura en cada ejecucion del livecycle sera una funcion de callback que estara obligada a wejecutar
+this.state = {counter : 0}
+this.setState(({counter}) => {counter : counter + 1}) // asincrono: a la cola del lifecycle del render
+this.setState(({counter}) => {counter : counter + 1}) // asincrono: a la cola del lifecycle del render
+this.setState(({counter}) => {counter : counter + 1}) // asincrono: a la cola del lifecycle del render
+console.log(this.counter) // ---> 0 // el estado aun sigue siendo 0, no cambiara hasta que cada ciclo de render (asincrono) se ejecute
+SE RENDERIZARA 3 VECES -> al final imprimira 3
+
+### setState(state, props)
