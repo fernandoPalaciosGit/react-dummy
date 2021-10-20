@@ -191,3 +191,14 @@ manera diferente de conceptualizar el ciclo el estado del componente y su ciclo 
 La ultima manera de contruir componentes en react es con Funcional COmponentes
 Estas funciones de primer orden solo reciben como argumanto las propertiies y retornan un objeto de JSX.
 El manejo de su estado se habilita a traves de los hooks --> useState()
+
+
+#### [stateX, setStateX] = useState(initValueOfStateX)
+- stateX representa una property del estado del componente
+- setStateX seguira siendo un metodo asyncrono (se encpola en el event loop del lifecycle -> por lko que React solo resolvera en el render el ultimo estado seteado por este metodo)
+que activara el proceso de re-renderizado del componente
+- setStateX tambien podra recibir un callback como primer parametro que permitira setear el valor de stateX pero desde el rendering event loop
+- setStateX NO tendra segundo parametro, en el metodo this.setState de las instancias de coimponentes de tipo React.Component recibiamos este segundo callback como parametro de interfaz a modo de onComplete
+En el caso de los hooks (setStateX) deberemos utilizar otro hook (useEffect) para intervenir en el momento en el que halla un cambio de estado
+
+#### useEffect(() => onSetStateX(), [stateX])

@@ -1,8 +1,11 @@
 import { Component } from "react";
 import {
   getStateFromLocalStorage,
+  setCounterStateKey,
   setStateToLocalStorage,
 } from "../localstorage/counter";
+
+setCounterStateKey("CounterComponentClass");
 
 export default class CounterComponent extends Component {
   constructor(props) {

@@ -1,4 +1,8 @@
-const counterStateKey = "counterState";
+let counterStateKey = "counterState";
+
+export function setCounterStateKey(key) {
+  return (counterStateKey = key || counterStateKey);
+}
 
 export function getStateFromLocalStorage(state = {}) {
   return JSON.parse(
