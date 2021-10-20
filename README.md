@@ -208,3 +208,20 @@ DEPENDENCY VALUES
 [state] -> state dependency -> will trigger effectCallback on react detects changes on counter value (on change different value for {counter})
  
 ##### eslint plugin: plugin-react-exhaustive-deps -> warning when dont dependency effect with state usage into the effect
+
+##### useRef()
+se trata de hook analogo a useState(), que permite tener un unico punto de memoria accesible desde cualquier parte y en cualquier momento de la ejecucion
+la idea es diferenciarse de UseState como el punto de referencia dinamico, es decir
+
+- [val, setValue] = useState() -> val, que representa el estado, es un valor que se resetea en todo momento,
+cada vez que el ciclo de render se inicializa, val, inicializara su referencia 
+es decir en cada render se crea un nuevo punto de memoria para almacenar el nuevo estado de la aplicacion  
+
+- {current} = useRef() -> current, que representa un valor que siempre mantendra la misma referencia de memoria
+
+esto se utiliza para comparar valores con el estado del hook useState
+
+const ref = useRef()
+ref.current = mySateRendered
+
+por ejemplo al asignar un valor de estado al {curent} nos permite comparar el valor que se ha renderizado (anterior) con el valor que se ha asignado al estado  

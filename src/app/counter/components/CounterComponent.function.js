@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useCounterStorage } from "../localstorage/useCounterStorage";
 
 const incrementCounterTesting = () => {
@@ -21,6 +21,8 @@ export default function CounterComponent({ max, min, step } = {}) {
     0,
     "CounterComponentFunction"
   );
+  const refCounter = useRef(counter);
+  const controlPosition = counter > refCounter.current ? +1 : -1;
   const incrementCounter = () =>
     setCounter((val) => (val < max ? val + step : val));
   const decrementCounter = () =>
@@ -29,12 +31,19 @@ export default function CounterComponent({ max, min, step } = {}) {
 
   // listener onChange {counter} state
   useEffect(() => setWebTitle(counter), [counter]);
+  refCounter.current = counter;
 
   return (
     <main className="Counter">
       <div>STEPS: {step}</div>
-      <div>MIN: {min}</div>
-      <div>MAX: {max}</div>
+      <div>
+        MIN: {min}
+        {counter !== 0 && controlPosition < 0 && <span> --> LOWER</span>}
+      </div>
+      <div>
+        MAX: {max}
+        {counter !== 0 && controlPosition > 0 && <span> --> HIGHER</span>}
+      </div>
       <p className="count">{counter}</p>
       <section className="controls">
         <button onClick={incrementCounter}>Increment</button>
