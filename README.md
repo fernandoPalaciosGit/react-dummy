@@ -225,3 +225,8 @@ const ref = useRef()
 ref.current = mySateRendered
 
 por ejemplo al asignar un valor de estado al {curent} nos permite comparar el valor que se ha renderizado (anterior) con el valor que se ha asignado al estado  
+
+
+#### useState() se debe utilizar cuando manejamos un unico valor de est5ado isolado al componente
+es decir, no se pasa a ningun componente hijo, solo maneja el estado del JSX de su propio function scope
+si ese estado se asocia 

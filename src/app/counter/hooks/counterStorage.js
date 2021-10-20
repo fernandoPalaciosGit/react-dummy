@@ -3,9 +3,9 @@ import {
   getStateFromLocalStorage,
   setCounterStateKey,
   setStateToLocalStorage,
-} from "./counter";
+} from "../localstorage/counter";
 
-export function useCounterStorage(initValue, storageKey) {
+export function counterStorage(initValue, storageKey) {
   setCounterStateKey(storageKey);
   const [counter, setCounter] = useState(getStateFromLocalStorage(initValue));
 
