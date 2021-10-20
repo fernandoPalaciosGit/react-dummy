@@ -13,7 +13,7 @@ const initial_grudge_list = [
     id: id(),
     person: name(),
     reason: "Did not brew another pot of coffee after drinking the last cup",
-    forgiven: false,
+    forgiven: true,
   },
   {
     id: id(),
@@ -43,7 +43,7 @@ const initial_grudge_list = [
     id: id(),
     person: name(),
     reason: 'Brought "paper products" to a potluck',
-    forgiven: false,
+    forgiven: true,
   },
   {
     id: id(),
@@ -71,12 +71,22 @@ const initial_grudge_list = [
   },
 ];
 
+export function getNewGrudge(person = "", reason = "") {
+  return {
+    id: id(),
+    person,
+    reason,
+    forgiven: false,
+  };
+}
+
 export default initial_grudge_list;
 
 export function PrintMockGrudgeList() {
   return (
-    <div className="Application"
-         dangerouslySetInnerHTML={{ __html: prettyJson(initial_grudge_list) }}>
-    </div>
+    <div
+      className="Application"
+      dangerouslySetInnerHTML={{ __html: prettyJson(initial_grudge_list) }}
+    ></div>
   );
 }
