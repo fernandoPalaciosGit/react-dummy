@@ -230,3 +230,17 @@ por ejemplo al asignar un valor de estado al {curent} nos permite comparar el va
 #### useState() se debe utilizar cuando manejamos un unico valor de est5ado isolado al componente
 es decir, no se pasa a ningun componente hijo, solo maneja el estado del JSX de su propio function scope
 si ese estado se asocia 
+
+
+#### puntos de memora de los estados -> setState() reference
+setState() gestiona el proceso de carga del renderizado de un componente en ufncion del "nuevo" valor que se le asigne
+si el valort es un primitivo, cada vez que (el event loop del procesod el render) se reasigne un nuevo valor, se enviara una señal para que el componente se vuelva a re-renderizar
+PROBLEMA: ya que unu primitivo se asocia al punto de menmoria a traves de su propio valor, si cambia el valor === cambia el punto de memoria === re-renderizado
+pero si asignamos un iterable, como es un Object o un Array como estado, este siempre ocupara el mismo punto de memoria aunque modifiquemos cualquier valor
+
+por lo tanto, como si fuera un reducer de de la storage de Rudux, DEBEMOS DEVOLVER UN NUEVO OBJETO AL CAMBIAR EL VALOR DE UN {STATE}  
+
+#### drilling handlers pattern
+Solamente para anidaciones de hasta 2/3 niveles de componentes
+Se trata de que un componente padre relegue el handler de un evento aun componente hijo para que lo ejecute
+Es decir la implementacion esta en el padre, pero la accion esta en el hijo

@@ -1,4 +1,8 @@
 import { render } from "react-dom";
-import GrudgeListApp from "./components/GrudgeListApp";
+import {PrintMockGrudgeList} from "./mocks/initial_grudge_list";
 
-render(<GrudgeListApp />, document.getElementById("root"));
+render(
+  <PrintMockGrudgeList />
+  // <GrudgeListAppPattern1 />
+  , document.getElementById("root")
+);
