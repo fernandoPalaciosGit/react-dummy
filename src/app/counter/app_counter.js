@@ -1,7 +1,8 @@
 import { render } from "react-dom";
-import Counter from "./components/Counter";
+// import CounterComponent from "./components/CounterComponent.function";
+import CounterComponent from "./components/CounterComponent.class";
 
 render(
-  <Counter min={-25} max={25} step={5} />,
+  <CounterComponent min={-25} max={25} step={5} />,
   document.getElementById("root")
 );

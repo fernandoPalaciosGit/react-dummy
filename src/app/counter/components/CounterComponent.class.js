@@ -6,14 +6,14 @@ const getStateFromLocalStorage = (state = {}) => {
     localStorage.getItem(counterStateKey) || JSON.stringify(state)
   );
 };
-const setStateFromLocalStorage = (state = {}) => {
+const setStateToLocalStorage = (state = {}) => {
   localStorage.setItem(counterStateKey, JSON.stringify(state));
 };
 
-export default class Counter extends Component {
-  constructor(prop) {
+export default class CounterComponent extends Component {
+  constructor(props) {
     // By default
-    super(prop);
+    super(props);
     this.state = getStateFromLocalStorage(this.state);
   }
 
@@ -32,7 +32,7 @@ export default class Counter extends Component {
       ({ counter }, { max, step }) =>
         counter < max && { counter: counter + step },
       () => {
-        setStateFromLocalStorage(this.state);
+        setStateToLocalStorage(this.state);
         console.log(`incrementCounter: AFTER setState() ${this.state.counter}`);
       }
     );
@@ -47,7 +47,7 @@ export default class Counter extends Component {
       ({ counter }, { min, step }) =>
         counter > min && { counter: counter - step },
       () => {
-        setStateFromLocalStorage(this.state);
+        setStateToLocalStorage(this.state);
         console.log(
           `decrementCounter: AFTER CHANGE state =  ${this.state.counter}`
         );
@@ -56,7 +56,7 @@ export default class Counter extends Component {
   };
 
   resetCounter = () =>
-    this.setState({ counter: 0 }, () => setStateFromLocalStorage(this.state));
+    this.setState({ counter: 0 }, () => setStateToLocalStorage(this.state));
 
   componentDidMount() {
     // this.setState({counter: this.state.counter + 1});

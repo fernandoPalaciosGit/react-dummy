@@ -176,3 +176,18 @@ console.log(this.counter) // ---> 0 // el estado aun sigue siendo 0, no cambiara
 SE RENDERIZARA 3 VECES -> al final imprimira 3
 
 ### setState((state, props) => ̣{ /*return CHANGE state*/ }, () => { /*AFTER setState()*/});
+
+
+###What to not to do on State management
+- si puedo heredar o calcular el estado de un comonente desde la properties --> NO lo crees en el {state}
+- si NO lo utilizo en el JSX ---> NO lo crees en el {state}
+pore ejemplo si obtenemos datos de una APi, solo almacenar los que vallamos a pintar o a recalcular : puedes almacenarlo en una variable
+
+####El {state} se debe crear en el contructor
+
+
+#### REACT HOOKS
+manera diferente de conceptualizar el ciclo el estado del componente y su ciclo de vida
+La ultima manera de contruir componentes en react es con Funcional COmponentes
+Estas funciones de primer orden solo reciben como argumanto las propertiies y retornan un objeto de JSX.
+El manejo de su estado se habilita a traves de los hooks --> useState()
