@@ -1,14 +1,8 @@
 import { Component } from "react";
-
-const counterStateKey = "counterState";
-const getStateFromLocalStorage = (state = {}) => {
-  return JSON.parse(
-    localStorage.getItem(counterStateKey) || JSON.stringify(state)
-  );
-};
-const setStateToLocalStorage = (state = {}) => {
-  localStorage.setItem(counterStateKey, JSON.stringify(state));
-};
+import {
+  getStateFromLocalStorage,
+  setStateToLocalStorage,
+} from "../localstorage/counter";
 
 export default class CounterComponent extends Component {
   constructor(props) {
