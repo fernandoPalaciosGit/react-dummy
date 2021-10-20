@@ -201,4 +201,10 @@ que activara el proceso de re-renderizado del componente
 - setStateX NO tendra segundo parametro, en el metodo this.setState de las instancias de coimponentes de tipo React.Component recibiamos este segundo callback como parametro de interfaz a modo de onComplete
 En el caso de los hooks (setStateX) deberemos utilizar otro hook (useEffect) para intervenir en el momento en el que halla un cambio de estado
 
-#### useEffect(() => onSetStateX(), [stateX])
+#### useEffect(callbackOnLifeCycle, [dependency])
+DEPENDENCY VALUES
+[] -> empty array -> will trigger effectCallback once on first render (on Mount render cycle, after constructor())
+() -> no dependency -> will trigger effectCallback on each render (on Update render cycle)
+[state] -> state dependency -> will trigger effectCallback on react detects changes on counter value (on change different value for {counter})
+ 
+##### eslint plugin: plugin-react-exhaustive-deps -> warning when dont dependency effect with state usage into the effect
