@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from "react";
 import { counterStorage } from "../hooks/counterStorage";
 import updateWebTitle from "../hooks/updateWebTitle";
 import ControlPosition from "../hooks/controlPosition";

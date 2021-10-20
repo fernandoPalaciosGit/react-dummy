@@ -50,6 +50,7 @@
     "dev:pets": "parcel src/app/pets/index_pets.html",
     "dev:hooks": "parcel src/app/hooks_example/index_hooks.html",
     "dev:counter": "parcel src/app/counter/index_counter.html",
+    "dev:grudgelist": "parcel src/app/grudge_list/index_grudge_list.html",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
