@@ -26,6 +26,7 @@ const reducerCharacterResponse = (state, action) => {
   }
 };
 
+// [PLUGIN -> useMiddleware] es una fachada sobre useReducer() que permite hacer dispatch de funciones
 export const reducerCharacters = () => {
   const [response, dispatch] = useReducer(
     reducerCharacterResponse,
