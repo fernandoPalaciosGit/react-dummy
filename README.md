@@ -244,3 +244,16 @@ por lo tanto, como si fuera un reducer de de la storage de Rudux, DEBEMOS DEVOLV
 Solamente para anidaciones de hasta 2/3 niveles de componentes
 Se trata de que un componente padre relegue el handler de un evento aun componente hijo para que lo ejecute
 Es decir la implementacion esta en el padre, pero la accion esta en el hijo
+
+
+#### PORQUE REEMPLAZAR EL USO DE useState()
+el hook de useState() es muy adecuado para acciones sencillas y que afecten a un fragmento reducido del render
+- uno de los problemas de useState() es que cada re-render va a evaluear una nueva funcion de hook -> consume memoria
+- otro gran problema es la manera en la que el lifecycle evalua un nuevo render, esto es a traves del valor del useState() si ha mutado o no,
+y esto nos limita a la hora de utilizar un objeto y Array como valor de estado, el cual ocupara el mismo punto de memoria aunque modifiquemos su valor,
+por lo que obliga al desarrollador a volver a crear un nuevo array u objeto cada vez que tengamos que cambiar el valor del estado  
+
+¿que es un reducer?
+es una funcion aislada de la logica de render a la que pueden ir a consultar la iinformacion que devuelve desde cualquier punto de la aplcaicion
+
+useReducer -->puede reemplazar<-- useState() + useEffect()

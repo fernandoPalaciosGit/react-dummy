@@ -10,9 +10,7 @@ export function GrudgeItem({ grudge, toggleForgiven }) {
           <input
             type="checkbox"
             checked={grudge.forgiven}
-            onChange={() =>
-              toggleForgiven({ ...grudge, forgiven: !grudge.forgiven })
-            }
+            onChange={() => toggleForgiven(grudge.id)}
           />
           Forgiven
         </label>
