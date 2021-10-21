@@ -1,6 +1,6 @@
-import { GrudgeItem } from "./GrudgeItem";
+import GrudgeItem from "./GrudgeItem";
 
-export function GrudgeList({ grudgeList, toggleForgiven }) {
+const GrudgeList = ({ grudgeList, toggleForgiven }) => {
   return (
     <section className="Grudges">
       {grudgeList.map((grudge) => (
@@ -12,4 +12,6 @@ export function GrudgeList({ grudgeList, toggleForgiven }) {
       ))}
     </section>
   );
-}
+};
+
+export default GrudgeList;

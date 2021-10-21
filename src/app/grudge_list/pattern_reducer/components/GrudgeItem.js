@@ -1,4 +1,7 @@
-export function GrudgeItem({ grudge, toggleForgiven }) {
+import { memo } from "react";
+
+// memo -> solo se ejecurtara esta funcion de react cuando cambie la referencia de toggleForgiven() [se lance el dispatch], o cambie el grudge
+const GrudgeItem = memo(({ grudge, toggleForgiven }) => {
   console.log("render grudge" + grudge.person);
 
   return (
@@ -17,4 +20,6 @@ export function GrudgeItem({ grudge, toggleForgiven }) {
       </div>
     </article>
   );
-}
+});
+
+export default GrudgeItem;
