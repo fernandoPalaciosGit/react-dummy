@@ -21,6 +21,7 @@ export function GrudgeListProvider({ children }) {
     });
   const value = { grudgeList, createGrudge, updateForgivenGrudge };
 
+  // Vamos a perder la capacidad de memoizar estos valores al pasarlos a los componentes
   return (
     <GrudgeListContext.Provider value={value}>
       {children}

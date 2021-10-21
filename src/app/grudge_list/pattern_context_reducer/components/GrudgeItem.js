@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { GrudgeListContext } from "../hooks/GrudgeListContext";
 
-// memo -> solo se ejecurtara esta funcion de react cuando cambie la referencia de toggleForgiven() [se lance el dispatch], o cambie el grudge
 const GrudgeItem = ({ grudge }) => {
   console.log("render grudge" + grudge.person);
   const { updateForgivenGrudge } = useContext(GrudgeListContext);

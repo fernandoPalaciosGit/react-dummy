@@ -1,7 +1,6 @@
 import { useState, useContext } from "react";
 import { GrudgeListContext } from "../hooks/GrudgeListContext";
 
-// memo -> solo se ejecurtara esta funcion de react cuando cambie la referencia de createNewGrudge() [se lance el dispatch]
 const GrudgeForm = () => {
   console.log("render grudgeForm");
   const [name, setName] = useState("");
@@ -9,7 +8,8 @@ const GrudgeForm = () => {
   const { createGrudge } = useContext(GrudgeListContext);
   const submitNewGrudge = (evt) => {
     evt.preventDefault();
-    if (!!name && !!grudge) {
+    const hasValidGrudge = !!name && !!grudge;
+    if (hasValidGrudge) {
       createGrudge(name, grudge);
       setName("");
       setGrudge("");
