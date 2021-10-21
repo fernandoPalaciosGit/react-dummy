@@ -257,3 +257,16 @@ por lo que obliga al desarrollador a volver a crear un nuevo array u objeto cada
 es una funcion aislada de la logica de render a la que pueden ir a consultar la iinformacion que devuelve desde cualquier punto de la aplcaicion
 
 useReducer -->puede reemplazar<-- useState() + useEffect()
+
+#### COMPARATIVA
+useReducer -> permite aislar funcionalidad fuera del contexto de los useStates
+            -> permite memoizar las properties que se pasan a traves de los componentes (React.memo [encapsula los componentes para memoizarlo en funcion de 1sus properties] y React.useCallback [permite memoizar los callbacks que se pasan como properties al componente])
+useContext  -> permite descentralizar las properties que se pasan coomo drilling entre componentes
+            -> CONTRA: no permite memoizar los valores que comparte
+
+React Redux ==?¿?== useReducer + useContext            
+React MobX ==?¿?== useReducer + useContext
+
+
+#### useContext [Context API]
+React.createContext = React.Provider Component + React.Consumer Component
