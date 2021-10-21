@@ -9,6 +9,8 @@
     "fibonacci": "^1.6.10",
     "history": "^5.0.1",
     "json-pretty-html": "^1.1.6",
+    "lodas": "^1.2.0",
+    "lodash": "^4.17.21",
     "node-random-name": "^1.0.1",
     "random-name": "^0.1.2",
     "react": "^17.0.1",

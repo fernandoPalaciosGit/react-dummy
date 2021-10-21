@@ -270,3 +270,12 @@ React MobX ==?¿?== useReducer + useContext
 
 #### useContext [Context API]
 React.createContext = React.Provider Component + React.Consumer Component
+
+##### THUNKS --> REDUX middlewares --> acciones asincronas --> THUNKS
+es una manera de dispach() que permite lanzar acciones asincronas
+retorna una funcion, a modo de promesa, que resolvera la llamada asincrona (cualquier proceso asincrono)
+- [plugin] useMiddleware() -> reemplaza useReducer() --> para lanzar acciones asincronas 
+
+
+###### creamos la implementacion de useMiddleware
+- si dispatch() es un funcion  -> la ejecutamos y pasamos como argumento la accion 

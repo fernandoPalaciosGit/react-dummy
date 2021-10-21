@@ -1,4 +1,8 @@
 import { render } from "react-dom";
-import Application from "./components/Application";
+import {
+  ApplicationOnLoadCharacters,
+  ApplicationFetchCharacters,
+} from "./components/Application";
 
-render(<Application />, document.getElementById("root"));
+// render(<ApplicationOnLoadCharacters />, document.getElementById("root"));
+render(<ApplicationFetchCharacters />, document.getElementById("root"));
