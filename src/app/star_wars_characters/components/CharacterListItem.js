@@ -1,10 +1,12 @@
+import { Link } from "react-router-dom";
+
 export default function CharacterListItem({ character }) {
   const { id, name } = character;
   return (
     <article className="CharacterListItem">
-      <a className="CharacterListItemLink" href={`/characters/${id}`}>
+      <Link className="CharacterListItemLink" to={`/characters/${id}`}>
         {name}
-      </a>
+      </Link>
     </article>
   );
 }

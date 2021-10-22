@@ -1,7 +1,19 @@
+import { lazy } from "react";
+import { Route, Switch } from "react-router-dom";
 import CharacterList from "./CharacterList";
 import { fetchCharacters } from "../hooks/fetchCharacters";
 import { loadCharacters } from "../hooks/loadCharacters";
 import { reducerCharacters } from "../hooks/reducerCharacters";
+
+const CharacterView = lazy(() => import("./CharacterView"));
+
+const CharacterSection = () => {
+  return (
+    <Switch>
+      <Route path="/characters/:id" component={CharacterView}></Route>
+    </Switch>
+  );
+};
 
 const Sidebar = ({ children, characters, loading, error }) => {
   return (
@@ -31,6 +43,7 @@ export function ApplicationOnLoadCharacters() {
       </header>
       <main>
         <Sidebar {...response} />
+        <CharacterSection />
       </main>
     </div>
   );
@@ -45,13 +58,12 @@ export function ApplicationFetchCharacters() {
         <h1>Star Wars Characters</h1>
       </header>
       <main>
-        <section className="sidebar">
-          <Sidebar {...response}>
-            <button onClick={() => dispatch(fetchCharacters)}>
-              Fetch Characters
-            </button>
-          </Sidebar>
-        </section>
+        <Sidebar {...response}>
+          <button onClick={() => dispatch(fetchCharacters)}>
+            Fetch Characters
+          </button>
+        </Sidebar>
+        <CharacterSection />
       </main>
     </div>
   );
