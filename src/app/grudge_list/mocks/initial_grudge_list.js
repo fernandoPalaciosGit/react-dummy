@@ -82,6 +82,12 @@ export function getNewGrudge(person = "", reason = "") {
 
 export default initial_grudge_list;
 
+export const init_grudge_list_navigation = {
+  past: [],
+  present: initial_grudge_list,
+  future: [],
+};
+
 export function PrintMockGrudgeList() {
   return (
     <div

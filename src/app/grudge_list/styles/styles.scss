@@ -26,10 +26,14 @@ input[type='submit'] {
   color: white;
   padding: 0.5em;
   transition: all 0.2s;
+
+  &[disabled] {
+    background-color: #c0bbbb
+  }
 }
 
-button:hover,
-.button:hover,
+button:hover:not([disabled]),
+.button:hover:not([disabled]),
 input[type='submit']:hover {
   background-color: #f65e81;
 }

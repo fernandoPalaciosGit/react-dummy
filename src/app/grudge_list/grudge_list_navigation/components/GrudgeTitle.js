@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { GrudgeListContext } from "../hooks/GrudgeListContext";
 
 export default function GrudgeTitle() {
-  const { grudgeList } = useContext(GrudgeListContext);
+  const { grudgeListNavigation } = useContext(GrudgeListContext);
 
-  return <h2>{grudgeList.length} Grudges</h2>;
+  return <h2>{grudgeListNavigation.present.length} Grudges</h2>;
 }

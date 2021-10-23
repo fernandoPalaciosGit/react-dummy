@@ -3,11 +3,11 @@ import GrudgeItem from "./GrudgeItem";
 import { GrudgeListContext } from "../hooks/GrudgeListContext";
 
 const GrudgeList = () => {
-  const { grudgeList } = useContext(GrudgeListContext);
+  const { grudgeListNavigation } = useContext(GrudgeListContext);
 
   return (
     <section className="Grudges">
-      {grudgeList.map((grudge) => (
+      {grudgeListNavigation.present.map((grudge) => (
         <GrudgeItem key={grudge.id} grudge={grudge} />
       ))}
     </section>

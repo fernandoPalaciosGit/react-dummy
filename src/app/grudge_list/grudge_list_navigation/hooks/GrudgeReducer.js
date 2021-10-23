@@ -1,10 +1,14 @@
 import { useReducer } from "react";
-import initial_grudge_list from "../../mocks/initial_grudge_list";
-import { getNewGrudge } from "../../mocks/initial_grudge_list";
+import {
+  getNewGrudge,
+  init_grudge_list_navigation,
+} from "../../mocks/initial_grudge_list";
 
 export const Actions = {
   CREATE_NEW_GRUDGE: "CREATE_NEW_GRUDGE",
   TOGGLE_FORGIVEN_GRUDGE: "TOGGLE_FORGIVEN_GRUDGE",
+  UNDO_GRUDGE: "UNDO_GRUDGE",
+  FORWARD_GRUDGE: "FORWARD_GRUDGE",
 };
 
 function toggleForgiven(grudge, updatedGrudgeId) {
@@ -13,7 +17,7 @@ function toggleForgiven(grudge, updatedGrudgeId) {
     : grudge;
 }
 
-function reducer(state, action) {
+function updateGrudgeListReducer(state, action) {
   switch (action.type) {
     case Actions.CREATE_NEW_GRUDGE:
       const { name, reason } = action.payload;
@@ -25,6 +29,40 @@ function reducer(state, action) {
   }
 }
 
-const grudgeReducer = () => useReducer(reducer, initial_grudge_list);
+function shuffleGrudgeNavigation(grudgeListReducer, initialState) {
+  function navigateGrudgeListReducer(state, action) {
+    const newPresent = grudgeListReducer(initialState.present, action);
+
+    switch (action.type) {
+      case Actions.UNDO_GRUDGE:
+        const [newPresentUNDO_GRUDGE, ...newPast] = state.past;
+
+        return {
+          past: newPast,
+          present: newPresentUNDO_GRUDGE,
+          future: [state.present, ...state.future],
+        };
+      case Actions.FORWARD_GRUDGE:
+        const [newPresentFORWARD_GRUDGE, ...newFuture] = state.future;
+
+        return {
+          past: [state.present, ...state.past],
+          present: newPresentFORWARD_GRUDGE,
+          future: newFuture,
+        };
+      default:
+        return {
+          past: [state.present, ...state.past],
+          present: newPresent,
+          future: [],
+        };
+    }
+  }
+
+  return useReducer(navigateGrudgeListReducer, initialState);
+}
+
+const grudgeReducer = () =>
+  shuffleGrudgeNavigation(updateGrudgeListReducer, init_grudge_list_navigation);
 
 export default grudgeReducer;
