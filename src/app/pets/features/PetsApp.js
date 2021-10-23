@@ -11,7 +11,10 @@ import {
 import store from "./../store";
 import updateTheme from "../store/actions/themeAction";
 
-const SearchParameters = lazy(() => import("../pages/SearchParameters"));
+// const SearchParameters = lazy(() => import("../pages/SearchParameters"));
+const SearchParameters = lazy(() =>
+  import("../pages/SearchParameters_formHook")
+);
 const DetailsWithErrorBoundary = lazy(() => import("../pages/Details"));
 
 export default class PetsApp extends Component {
