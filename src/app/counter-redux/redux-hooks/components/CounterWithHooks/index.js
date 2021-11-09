@@ -1,7 +1,8 @@
-import useCounterReducer from "../../hooks/useCounterReducer";
 import Counter from "../../../shared/components/Counter";
+import useCounterReducer from "../../hooks/useCounterReducer";
 
 export default function CounterWithHooks() {
-  const counterReducer = useCounterReducer();
-  return <Counter {...counterReducer} />;
+  const { counter, increase, decrease } = useCounterReducer();
+
+  return <Counter />;
 }
