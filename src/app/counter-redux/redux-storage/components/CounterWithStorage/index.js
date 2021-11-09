@@ -4,5 +4,5 @@ import useCounterStorage from "../../hooks/useCounterStorage";
 export default function CounterWithStorage() {
   const { counter, increase, decrease } = useCounterStorage();
 
-  return <Counter />;
+  return <Counter type="CounterWithStorage" />;
 }

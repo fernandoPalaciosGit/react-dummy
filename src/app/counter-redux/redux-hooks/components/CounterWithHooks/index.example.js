@@ -3,5 +3,5 @@ import Counter from "../../../shared/components/Counter";
 
 export default function CounterWithHooks() {
   const counterReducer = useCounterReducer();
-  return <Counter {...counterReducer} />;
+  return <Counter {...counterReducer} type="CounterWithHooks" />;
 }

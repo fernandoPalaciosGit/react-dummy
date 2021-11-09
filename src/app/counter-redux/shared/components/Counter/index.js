@@ -2,15 +2,22 @@ export default function Counter({
   increase = Function(),
   decrease = Function(),
   counter = 0,
+  type = "",
 }) {
   return (
     <div>
-      <button onClick={decrease}> ➖ </button>
+      <button data-testid={`decrease-counter-${type}`} onClick={decrease}>
+        {" "}
+        ➖{" "}
+      </button>
       <span>
         {" "}
-        <strong>{counter}</strong>{" "}
+        <strong data-testid={`counter-${type}`}>{counter}</strong>{" "}
       </span>
-      <button onClick={increase}> ➕ </button>
+      <button data-testid={`increase-counter-${type}`} onClick={increase}>
+        {" "}
+        ➕{" "}
+      </button>
     </div>
   );
 }

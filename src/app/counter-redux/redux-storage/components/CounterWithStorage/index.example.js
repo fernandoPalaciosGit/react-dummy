@@ -5,7 +5,7 @@ import useCounterStorage from "../../hooks/useCounterStorage.example";
 
 const CounterStorageProvider = () => {
   const counterStorage = useCounterStorage();
-  return <Counter {...counterStorage} />;
+  return <Counter {...counterStorage} type="CounterWithStorage" />;
 };
 
 export default function CounterWithStorage() {

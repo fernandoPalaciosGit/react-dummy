@@ -4,5 +4,5 @@ import useCounterReducer from "../../hooks/useCounterReducer";
 export default function CounterWithHooks() {
   const { counter, increase, decrease } = useCounterReducer();
 
-  return <Counter />;
+  return <Counter type="CounterWithHooks" />;
 }
