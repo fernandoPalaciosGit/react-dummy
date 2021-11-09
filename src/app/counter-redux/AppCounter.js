@@ -1,7 +1,7 @@
-// import CounterWithHooks from "./redux-hooks/components/CounterWithHooks/index.example";
-// import CounterWithStorage from "./redux-storage/components/CounterWithStorage/index.example";
-import CounterWithHooks from "./redux-hooks/components/CounterWithHooks";
-import CounterWithStorage from "./redux-storage/components/CounterWithStorage";
+import CounterWithHooks from "./redux-hooks/components/CounterWithHooks/index.example";
+import CounterWithStorage from "./redux-storage/components/CounterWithStorage/index.example";
+// import CounterWithHooks from "./redux-hooks/components/CounterWithHooks";
+// import CounterWithStorage from "./redux-storage/components/CounterWithStorage";
 
 export default function AppCounter() {
   return (
