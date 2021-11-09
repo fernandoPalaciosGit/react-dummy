@@ -1,4 +1,8 @@
-export default function Counter({ increase, decrease, counter }) {
+export default function Counter({
+  increase = Function(),
+  decrease = Function(),
+  counter = 0,
+}) {
   return (
     <div>
       <button onClick={decrease}> ➖ </button>

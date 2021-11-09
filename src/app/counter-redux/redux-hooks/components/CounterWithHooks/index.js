@@ -1,4 +1,4 @@
-import useCounterReducer from "../../hooks/useCounterReduecr";
+import useCounterReducer from "../../hooks/useCounterReducer";
 import Counter from "../../../shared/components/Counter";
 
 export default function CounterWithHooks() {

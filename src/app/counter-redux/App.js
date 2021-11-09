@@ -6,11 +6,13 @@ export default function App() {
     <div>
       <h1>Redux implementation</h1>
       <div>
-        <div>Update Counter (Use hook reducer to implement Counter)</div>
+        <h2>Use hook reducer to implement Counter</h2>
         <CounterWithHooks />
       </div>
+      <br />
+      <br />
       <div>
-        <div>Update Counter (Use Redux to implement Counter)</div>
+        <h2>Use Storage to implement Counter</h2>
         <CounterWithStorage />
       </div>
     </div>

@@ -4,3 +4,4 @@ dist
 .cache
 dist-server
 coverage
+.DS_Store

@@ -6,7 +6,7 @@ import theme from "./themeReducer";
 
 // creamos diferentes entry points en el storage, como objeto clave (nombre del reducer) -> valor (function reducer)
 export const reducers = combineReducers({
-  location,
+  location: location,
   breed,
   animal,
   theme,
